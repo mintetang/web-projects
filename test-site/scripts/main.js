@@ -14,9 +14,9 @@ myImage.addEventListener("click", () => {
 let myButton = document.querySelector("button");
 let myHeading = document.querySelector("h1");
 function setUserName() {
-  const myName = prompt("Please INPUT your name.");
+  const myName = prompt("請輸入");
   if (myName === null) {
-  console.log("User cancelled the prompt.");
+  console.log("已經取消.");
   // Perform actions for cancellation, e.g., stop further processing
 } else if (myName === "") {
   console.log("User clicked OK but entered no text.");
