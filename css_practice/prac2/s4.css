@@ -1,0 +1,13 @@
+html {
+  font-size: 1em;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+@media (width >= 600px) {
+  h1 {
+    font-size: 4rem;
+  }
+}
