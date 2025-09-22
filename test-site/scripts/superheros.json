@@ -8,7 +8,7 @@
     {
       "name" : "曹牧師",
       "age" : 56,
-      "secretIdentity" : "Lutheran",
+      "secretIdentity" : "主任牧師",
       "powers" : [
         "講道",
         "牧會",
@@ -28,7 +28,7 @@
     {
       "name" : "裘牧師",
       "age" : 50,
-      "secretIdentity" : "創意總監",
+      "secretIdentity" : "專任牧師",
       "powers" : [
         "牧養",
         "關懷",
