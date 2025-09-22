@@ -6,35 +6,34 @@
   "active" : true,
   "members" : [
     {
-      "name" : "Molecule Man",
-      "age" : 29,
-      "secretIdentity" : "Dan Jukes",
+      "name" : "曹牧師",
+      "age" : 56,
+      "secretIdentity" : "Lutheran",
       "powers" : [
-        "Radiation resistance",
-        "Turning tiny",
-        "Radiation blast"
+        "講道",
+        "牧會",
+        "音樂"
       ]
     },
     {
-      "name" : "Madame Uppercut",
-      "age" : 39,
-      "secretIdentity" : "Jane Wilson",
+      "name" : "譚教師",
+      "age" : 59,
+      "secretIdentity" : "行政總管",
       "powers" : [
-        "Million tonne punch",
-        "Damage resistance",
-        "Superhuman reflexes"
+        "行政",
+        "團隊",
+        "牧養"
       ]
     },
     {
-      "name" : "Eternal Flame",
-      "age" : 1000000,
-      "secretIdentity" : "Unknown",
+      "name" : "裘牧師",
+      "age" : 50,
+      "secretIdentity" : "創意總監",
       "powers" : [
-        "Immortality",
-        "Heat Immunity",
-        "Inferno",
-        "Teleportation",
-        "Interdimensional travel"
+        "牧養",
+        "關懷",
+        "禱告",
+        "講道"
       ]
     }
   ]
