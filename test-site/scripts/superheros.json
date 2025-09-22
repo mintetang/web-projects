@@ -1,8 +1,8 @@
 {
-  "squadName" : "Super Hero Squad",
-  "homeTown" : "Metro City",
-  "formed" : 2016,
-  "secretBase" : "Super tower",
+  "squadName" : "點名簿",
+  "homeTown" : "台北市",
+  "formed" : 2026,
+  "secretBase" : "信義堂會友",
   "active" : true,
   "members" : [
     {
