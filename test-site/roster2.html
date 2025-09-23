@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" 
           content="width=device-width, initial-scale=1.0">
-    <title>Student Attendance Portal</title>
+    <title>Attendance Portal</title>
     <link rel="stylesheet" href="styles/roster2.css">
     <style>
         .popup {
@@ -28,13 +28,13 @@
     <div class="navbar">
         <div class="navbar-brand">
             <h1> 
-                Student Attendance Portal
+                出席統計
             </h1>
         </div>
         <div class="navbar-links">
             <p>
-                Academic Year: 
-                <span id="academicYear">2024</span>
+                年: 
+                <span id="academicYear">2026</span>
             </p>
             <!-- Add other relevant information -->
         </div>
@@ -42,17 +42,17 @@
 
     <div class="container">
         <div id="formSection">
-            <h2>Mark Attendance</h2>
+            <h2>出席記錄</h2>
             <button id="addStudentButton" 
                 onclick="showAddStudentForm()">
-                Add Student
+                加入會友
             </button>
             <button id="addClassButton" 
                 onclick="showAddClassForm()">
-                Add Class
+                統計日期
             </button>
 
-            <label for="classSelector">Class:</label>
+            <label for="classSelector">日期:</label>
             <select id="classSelector" required 
                 onchange="showStudentsList()">
                 <!-- Populate classes dynamically -->
@@ -66,25 +66,25 @@
             <div id="summarySection">
                 <h3>Summary</h3>
                 <p>
-                    Total Students: 
+                    全部人數: 
                     <span id="totalStudents">0</span>
                 </p>
                 <p>
-                    Total Present: 
+                    出席人數: 
                     <span id="totalPresent">0</span>
                 </p>
                 <p>
-                    Total Absent: 
+                    缺席人數: 
                     <span id="totalAbsent">0</span>
                 </p>
                 <p>
-                    Total Leave: 
+                    請假出差: 
                     <span id="totalLeave">0</span>
                 </p>
             </div>
 
             <button onclick="submitAttendance()">
-                Submit Attendance
+                確認送出統計
             </button>
 
             <!-- Result Section -->
@@ -123,33 +123,33 @@
     </div>
 
     <div id="addStudentPopup" class="popup">
-        <h2>Add Student</h2>
+        <h2>加入會友</h2>
         <!-- Add Student Form Content -->
         <label for="newStudentName">
-            Student Name:
+            會友名稱:
         </label>
         <input type="text" id="newStudentName" required>
         <label for="newStudentRoll">
-            Roll Number:
+            編號:
         </label>
         <input type="text" id="newStudentRoll" required>
         <!-- Add more fields as needed -->
 
         <button onclick="addStudent()">
-            submit
+            送出
         </button>
         <button onclick="closePopup()">
-            Cancel
+            取消
         </button>
     </div>
 
     <div id="addClassPopup" class="popup">
-        <h2>Add Class</h2>
+        <h2>加入日期</h2>
         <!-- Add Class Form Content -->
         <label for="newClassName">
-            Class Name:
+            日期:
         </label>
-        <input type="text" id="newClassName" required>
+        <input type="date" id="newClassName" required>
         <!-- Add more fields as needed -->
 
         <button onclick="addClass()">
