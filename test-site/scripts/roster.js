@@ -30,6 +30,13 @@ function populateHeroes(obj) {
     const myH2 = document.createElement("h2");
     const myPara1 = document.createElement("p");
     const myPara2 = document.createElement("p");
+    // Create a new input element
+    const myInput1 = document.createElement('input');
+    // Set its attributes
+    myInput1.type = 'radio';
+    myInput1.name = 'att';
+    myInput1.id = 'att';
+
     //const myPara3 = document.createElement("p");
     //const myList = document.createElement("ul");
 
