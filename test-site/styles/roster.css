@@ -4,6 +4,11 @@ html {
   font-family: 'helvetica neue', helvetica, arial, sans-serif;
 }
 
+header {
+  font-weight: bold;
+  //text-align: center;
+}
+
 body {
   width: 800px;
   margin: 0 auto;
@@ -16,15 +21,18 @@ h1, h2 {
 /* header styles */
 
 h1 {
-  font-size: 4rem;
+  font-size: 2rem;
   text-align: center;
 }
 
-header p {
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-align: center;
+h2  {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
 }
+
+label {color:blue;
+font-weight: bold;}
 input[type="date"] {margin-right: 1.5em}
 label[for="session2"] {margin-left: 1em}
 /* section styles */
@@ -35,6 +43,7 @@ section article {
 }
 
 section p {
+  font-size: 1rem;
   margin: 5px 0;
 }
 
@@ -42,11 +51,6 @@ section ul {
   margin-top: 0;
 }
 
-h2 {
-  font-size: 2.5rem;
-  letter-spacing: -5px;
-  margin-bottom: 10px;
-}
 * {
   box-sizing: border-box;
 }

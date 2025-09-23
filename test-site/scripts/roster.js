@@ -29,12 +29,26 @@ function populateHeroes(obj) {
     const myH2 = document.createElement("h2");
     const myPara1 = document.createElement("p");
     const myPara2 = document.createElement("p");
+    const label1 = document.createElement('label');
+    // Create the text node for the label's content
+    const label1Text = document.createTextNode('出席？');
+    // Append the text node to the label element
+    label1.appendChild(label1Text);
+    const label2 = document.createElement('label');
+    // Create the text node for the label's content
+    const label2Text = document.createTextNode('宣教外出？');
+    // Append the text node to the label element
+    label2.appendChild(label2Text);
+
     // Create a new input element
     const myInput1 = document.createElement('input');
     // Set its attributes
-    myInput1.type = 'radio';
+    myInput1.type = 'checkbox';
     myInput1.name = 'att';
-    myInput1.id = 'att';
+    const myInput2 = document.createElement('input');
+    // Set its attributes
+    myInput2.type = 'checkbox';
+    myInput2.name = 'evangle';
 
     //const myPara3 = document.createElement("p");
     //const myList = document.createElement("ul");
@@ -54,6 +68,10 @@ function populateHeroes(obj) {
     mySbl.appendChild(myH2);
     mySbl.appendChild(myPara1);
     mySbl.appendChild(myPara2);
+    mySbl.appendChild(label1);
+    mySbl.appendChild(myInput1);
+    mySbl.appendChild(label2);
+    mySbl.appendChild(myInput2);
     //mySbl.appendChild(myPara3);
     //mySbl.appendChild(myList);
 
