@@ -5,8 +5,11 @@ function populate() {
   "https://mintetang.github.io/web-projects/test-site/scripts/superheros.json";
   const request = new Request(requestURL);
 
-  const response = await fetch(request);
-  const superHeroes = await response.json();
+  //const response = await fetch(request);
+  //const superHeroes = await response.json();
+
+  const response = fetch(request);
+  const superHeroes = response.json();
 
   populateHeader(superHeroes);
   populateHeroes(superHeroes);
