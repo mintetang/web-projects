@@ -25,32 +25,32 @@ function populateHeroes(obj) {
   const heroes = obj.members;
 
   for (const hero of heroes) {
-    const myArticle = document.createElement("article");
+    const mySbl = document.createElement("article");
     const myH2 = document.createElement("h2");
     const myPara1 = document.createElement("p");
     const myPara2 = document.createElement("p");
-    const myPara3 = document.createElement("p");
-    const myList = document.createElement("ul");
+    //const myPara3 = document.createElement("p");
+    //const myList = document.createElement("ul");
 
     myH2.textContent = hero.name;
     myPara1.textContent = `職務: ${hero.secretIdentity}`;
     myPara2.textContent = `年齡: ${hero.age}`;
-    myPara3.textContent = "專長:";
+    //myPara3.textContent = "專長:";
 
-    const superPowers = hero.powers;
-    for (const power of superPowers) {
-      const listItem = document.createElement("li");
-      listItem.textContent = power;
-      myList.appendChild(listItem);
-    }
+    //const superPowers = hero.powers;
+    //for (const power of superPowers) {
+    //  const listItem = document.createElement("li");
+    //  listItem.textContent = power;
+    //  myList.appendChild(listItem);
+    //}
 
-    myArticle.appendChild(myH2);
-    myArticle.appendChild(myPara1);
-    myArticle.appendChild(myPara2);
-    myArticle.appendChild(myPara3);
-    myArticle.appendChild(myList);
+    mySbl.appendChild(myH2);
+    mySbl.appendChild(myPara1);
+    mySbl.appendChild(myPara2);
+    //mySbl.appendChild(myPara3);
+    //mySbl.appendChild(myList);
 
-    section.appendChild(myArticle);
+    section.appendChild(mySbl);
   }
 }
 populate();
