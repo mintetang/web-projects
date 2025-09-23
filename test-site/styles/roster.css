@@ -38,8 +38,12 @@ label[for="session2"] {margin-left: 1em}
 /* section styles */
 
 section article {
-  width: 33%;
+  width: 16%;
   float: left;
+}
+article {
+  border-right:  solid 1px;
+  border-bottom: green dashed 1px;
 }
 
 section p {
