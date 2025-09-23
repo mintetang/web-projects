@@ -10,8 +10,8 @@ header {
 }
 
 body {
-  width: 800px;
-  margin: 0 auto;
+  width: 600px;
+  margin: 20px ;
 }
 
 h1, h2 {
@@ -35,14 +35,17 @@ label {color:blue;
 font-weight: bold;}
 input[type="date"] {margin-right: 1.5em}
 label[for="session2"] {margin-left: 1em}
+//label[name="lab2"] {display: block}
 /* section styles */
 
 section article {
-  width: 16%;
+  width: 20%;
   float: left;
 }
 article {
-  border-right:  solid 1px;
+  margin-top: 20px;
+  padding: 5px;
+  border-right:  dashed 1px;
   border-bottom: green dashed 1px;
 }
 

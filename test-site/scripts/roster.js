@@ -35,8 +35,10 @@ function populateHeroes(obj) {
     // Append the text node to the label element
     label1.appendChild(label1Text);
     const label2 = document.createElement('label');
+    label2.setAttribute("name", "lab2");
+    console.log(label2);
     // Create the text node for the label's content
-    const label2Text = document.createTextNode('宣教外出？');
+    const label2Text = document.createTextNode('外出宣教？');
     // Append the text node to the label element
     label2.appendChild(label2Text);
 
