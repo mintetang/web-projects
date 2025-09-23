@@ -1,15 +1,11 @@
-//async function populate() {
-function populate() {
+async function populate() {
   const requestURL =
     //"https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
   "https://mintetang.github.io/web-projects/test-site/scripts/superheros.json";
   const request = new Request(requestURL);
 
-  //const response = await fetch(request);
-  //const superHeroes = await response.json();
-
-  const response = fetch(request);
-  const superHeroes = response.json();
+  const response = await fetch(request);
+  const superHeroes = await response.json();
 
   populateHeader(superHeroes);
   populateHeroes(superHeroes);
