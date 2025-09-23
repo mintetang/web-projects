@@ -1,4 +1,5 @@
-async function populate() {
+//async function populate() {
+function populate() {
   const requestURL =
     //"https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
   "https://mintetang.github.io/web-projects/test-site/scripts/superheros.json";
