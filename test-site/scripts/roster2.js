@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded",
         showStudentsList();
     });
 
+function showAddStudentOrgForm() {
+    document.getElementById('addStudentOrg').
+        style.display = 'block';
+}
+
 function showAddStudentForm() {
     document.getElementById('addStudentPopup').
         style.display = 'block';

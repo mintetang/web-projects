@@ -31,13 +31,17 @@
     <div class="container">
         <div id="formSection">
             <h2>出席記錄</h2>
-            <button id="addStudentButton" 
-                onclick="showAddStudentForm()">
-                加入會友
-            </button>
             <button id="addClassButton" 
                 onclick="showAddClassForm()">
                 統計日期
+            </button>
+            <button id="addStudentOrg" 
+                onclick="showAddStudentOrgForm()">
+                列出現有名單
+            </button>
+            <button id="addStudentButton" 
+                onclick="showAddStudentForm()">
+                加入新會友
             </button>
 
             <label for="classSelector">日期:</label>
@@ -110,20 +114,17 @@
         </div>
     </div>
 
-    <div id="addStudentPopup" class="popup">
-        <h2>加入會友</h2>
-        <!-- Add Student Form Content -->
-        <label for="newStudentName">
-            會友名稱:
+    <div id="addStudentOrg" class="popup">
+        <h2>Import Org</h2>
+        <!-- Add all org memebers from json -->
+        <label for="StudentOrg">
+            會友名單輸入:
         </label>
-        <input type="text" id="newStudentName" required>
-        <label for="newStudentRoll">
-            編號:
-        </label>
-        <input type="text" id="newStudentRoll" required>
+        <input type="file" id="StudentOrg " name="filename" required>
+
         <!-- Add more fields as needed -->
 
-        <button onclick="addStudent()">
+        <button onclick="addStudentOrg()">
             送出
         </button>
         <button onclick="closePopup()">
@@ -141,13 +142,31 @@
         <!-- Add more fields as needed -->
 
         <button onclick="addClass()">
-            Submit
+            送出
         </button>
         <button onclick="closePopup()">
-            Cancel
+            取消
         </button>
     </div>
+    <div id="addStudentPopup" class="popup">
+        <h2>加入新會友</h2>
+        <!-- Add Student Form Content -->
+        <label for="newStudentName">
+            會友名稱:
+        </label>
+        <input type="text" id="newStudentName" required>
+        <label for="newStudentRoll">
+            編號:
+        </label>
+        <input type="text" id="newStudentRoll" required>
+        <!-- Add more fields as needed -->
 
+        <button onclick="addStudent()">
+            送出
+        </button>
+        <button onclick="closePopup()">
+            取消
+        </button>
     <script src="scripts/roster2.js"></script>
 </body>
 
