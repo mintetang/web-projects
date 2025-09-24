@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded",
     });
 
 function showAddStudentOrgForm() {
-    document.getElementById('addStudentOrg').
+    document.getElementById('addStudentOrgPopup').
         style.display = 'block';
 }
 
@@ -204,6 +204,8 @@ function closePopup() {
     document.getElementById('addStudentPopup').
         style.display = 'none';
     document.getElementById('addClassPopup').
+        style.display = 'none';
+    document.getElementById('addStudentOrgPopup').
         style.display = 'none';
 }
 

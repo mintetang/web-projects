@@ -35,7 +35,7 @@
                 onclick="showAddClassForm()">
                 統計日期
             </button>
-            <button id="addStudentOrg" 
+            <button id="addStudentOrgButton" 
                 onclick="showAddStudentOrgForm()">
                 列出現有名單
             </button>
@@ -114,17 +114,17 @@
         </div>
     </div>
 
-    <div id="addStudentOrg" class="popup">
-        <h2>Import Org</h2>
+    <div id="addStudentOrgPopup" class="popup">
+        <h2>會友名單</h2>
         <!-- Add all org memebers from json -->
-        <label for="StudentOrg">
-            會友名單輸入:
+        <label for="Org">
+            選擇會友名單:
         </label>
-        <input type="file" id="StudentOrg " name="filename" required>
+        <input type="file" id="Org" required>
 
         <!-- Add more fields as needed -->
 
-        <button onclick="addStudentOrg()">
+        <button onclick="addClass()">
             送出
         </button>
         <button onclick="closePopup()">
@@ -167,6 +167,7 @@
         <button onclick="closePopup()">
             取消
         </button>
+    </div>
     <script src="scripts/roster2.js"></script>
 </body>
 
