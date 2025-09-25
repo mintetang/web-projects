@@ -3,10 +3,9 @@ function addOrg() {
     const jsonArrayString = '[{"name":"Q1", "roll":"101"},{"name":"Q2", "roll":"102"}]';
     const jsArray = JSON.parse(jsonArrayString);
     console.log(jsArray.length);
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < jsArray.length; i++) {
     const newStudentName = jsArray[i].name;
     const newStudentRoll = jsArray[i].roll;
-    }
     if (!newStudentName || !newStudentRoll) {
         alert("Missing name or roll number.");
         return;
@@ -44,5 +43,6 @@ function addOrg() {
 
     studentsList.appendChild(listItem);
     saveStudentsList(selectedClass);
+    }
     closePopup();
 }
