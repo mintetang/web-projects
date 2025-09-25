@@ -28,7 +28,6 @@ function addOrg() {
     for (let i = 0; i < 2; i++) {
     const newStudentName = jsArray[i].name;
     const newStudentRoll = jsArray[i].roll;
-    }
     if (!newStudentName || !newStudentRoll) {
         alert("Missing name or roll number.");
         return;
@@ -66,6 +65,7 @@ function addOrg() {
 
     studentsList.appendChild(listItem);
     saveStudentsList(selectedClass);
+    }
     closePopup();
 }
 
