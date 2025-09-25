@@ -20,10 +20,17 @@ function showAddClassForm() {
     document.getElementById('addClassPopup').
         style.display = 'block';
 }
-function addOrg() {
+
+async function addOrg() {
     // Get input values
-    const jsonArrayString = '[{"name":"Q1", "roll":"101"},{"name":"Q2", "roll":"102"}]';
-    const jsArray = JSON.parse(jsonArrayString);
+    //const jsonArrayString = '[{"name":"Q0", "roll":"10"},{"name":"Q1", "roll":"11"},{"name":"Q2", "roll":"12"}]';
+    //const jsArray = JSON.parse(jsonArrayString);
+const requestURL =
+     "https://mintetang.github.io/web-projects/test-site/scripts/nameroll1.json";
+  const request = new Request(requestURL);
+  const response = await fetch(request);
+  const rData = await response.json();
+    const jsArray = rData.data;
     console.log(jsArray.length);
     for (let i = 0; i < jsArray.length; i++) {
     const newStudentName = jsArray[i].name;
