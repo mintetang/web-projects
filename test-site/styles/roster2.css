@@ -107,7 +107,8 @@ button {
 button.absent,
 button.present,
 button.leave {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.32);
+    border:solid;
 }
 
 button {

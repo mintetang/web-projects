@@ -57,13 +57,13 @@ const requestURL =
         (Roll No. ${newStudentRoll})`;
 
     const absentButton =
-        createButton('A', 'absent',
+        createButton('缺席', 'absent',
             () => markAttendance('absent', listItem, selectedClass));
     const presentButton =
-        createButton('P', 'present',
+        createButton('出席', 'present',
             () => markAttendance('present', listItem, selectedClass));
     const leaveButton =
-        createButton('L', 'leave',
+        createButton('請假', 'leave',
             () => markAttendance('leave', listItem, selectedClass));
 
     listItem.appendChild(absentButton);
@@ -105,13 +105,13 @@ function addStudent() {
         (Roll No. ${newStudentRoll})`;
 
     const absentButton =
-        createButton('A', 'absent',
+        createButton('缺席', 'absent',
             () => markAttendance('absent', listItem, selectedClass));
     const presentButton =
-        createButton('P', 'present',
+        createButton('出席', 'present',
             () => markAttendance('present', listItem, selectedClass));
     const leaveButton =
-        createButton('L', 'leave',
+        createButton('請假', 'leave',
             () => markAttendance('leave', listItem, selectedClass));
 
     listItem.appendChild(absentButton);
