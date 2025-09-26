@@ -67,14 +67,25 @@ ul {
 }
 
 li {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #ecf0f1;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: inline-grid;
+    align-items: left;
+}
+
+/*li {
     margin: 10px 0;
     padding: 10px;
     background-color: #ecf0f1;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: left;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-}
+} */
 
 strong {
     margin-right: 10px;
