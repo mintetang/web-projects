@@ -315,11 +315,11 @@ function showStudentsList() {
             </strong> 
             (Roll No. ${student.rollNumber})`;
 
-        const absentButton = createButton('A', 'absent', 
+        const absentButton = createButton('缺席', 'absent', 
             () => markAttendance('absent', listItem, selectedClass));
-        const presentButton = createButton('P', 'present', 
+        const presentButton = createButton('出席', 'present', 
             () => markAttendance('present', listItem, selectedClass));
-        const leaveButton = createButton('L', 'leave', 
+        const leaveButton = createButton('請假', 'leave', 
             () => markAttendance('leave', listItem, selectedClass));
 
         const savedColor = getSavedColor
