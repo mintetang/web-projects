@@ -124,8 +124,13 @@ function addStudent() {
 }
 
 function addClass() {
-    const newClassName = document.
+	//jt 0927
+	const newSession = document.
+        getElementById('session').value;
+    const tempClassName = document.
         getElementById('newClassName').value;
+	const newClassName = `${tempClassName}-${newSession}`;
+	console.log(newClassName);
 
     if (!newClassName) {
         alert("Please provide a class name.");

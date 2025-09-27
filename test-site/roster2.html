@@ -44,16 +44,16 @@
                 加入新會友
             </button>
 
-            <label for="classSelector">日期:</label>
+            <label for="classSelector">日期和堂次:</label>
             <select id="classSelector" required 
                 onchange="showStudentsList()">
             </select>
-            <label for="sessionSelector">選擇第幾堂:</label>
-            <select id="sessionSelector" required>
+            <!--<label for="sessionSelector">選擇第幾堂:</label>
+            <select id="sessionSelector" required
+                onchange="showStudentsList()">
 				<option value="first">第1堂</option>
 				<option value="second" selected>第2堂</option>				
-                <!-- Populate classes dynamically -->
-            </select>
+            </select> -->
 
             <ul id="studentsList">
                 <!-- Populate students dynamically 
@@ -123,14 +123,14 @@
         <h2>會友名單</h2>
         <!-- Add all org memebers from json -->
         <label for="org">
-            選擇會友名單:
+            確認批次匯入會友名單?
         </label>
-        <input type="file" id="org" required>
+        <input type="file" hidden id="org">
 
         <!-- Add more fields as needed -->
 
         <button onclick="addOrg()">
-            送出
+            確認
         </button>
         <button onclick="closePopup()">
             取消
@@ -144,6 +144,12 @@
             日期:
         </label>
         <input type="date" id="newClassName" required>
+        <label for="session">選擇第幾堂:</label>
+        <select id="session" required>
+            <option value="第1堂">第1堂</option>
+            <option value="第2堂" selected>第2堂</option>				
+                <!-- Populate classes dynamically -->
+            </select>
         <!-- Add more fields as needed -->
 
         <button onclick="addClass()">
