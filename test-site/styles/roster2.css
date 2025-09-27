@@ -54,13 +54,14 @@ label {
     margin-top: 10px;
     display: block;
 }
+label[for="classSelector"]{display:inline;margin-left: 10px}
+label[for="sessionSelector"]{display:inline;margin-left: 10px}
 
 select {
     padding: 8px;
     margin: 5px 0;
     border: 1px solid #ccc;
 }
-
 ul {
     list-style: none;
     padding: 0;

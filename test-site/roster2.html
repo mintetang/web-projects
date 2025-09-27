@@ -47,6 +47,12 @@
             <label for="classSelector">日期:</label>
             <select id="classSelector" required 
                 onchange="showStudentsList()">
+            </select>
+            <label for="sessionSelector">選擇第幾堂:</label>
+            <select id="sessionSelector" required
+                onchange="showStudentsList()">
+				<option value="first">第1堂</option>
+				<option value="second" selected>第2堂</option>				
                 <!-- Populate classes dynamically -->
             </select>
 
@@ -168,6 +174,7 @@
             取消
         </button>
     </div>
+    <div><button onclick="localStorage.clear();">clean資料 </button> </div>
     <script src="scripts/roster2.js"></script>
 </body>
 

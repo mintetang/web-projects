@@ -140,6 +140,7 @@ function addClass() {
     newClassOption.value = newClassName;
     newClassOption.text = newClassName;
     classSelector.add(newClassOption);
+    classSelector.value = newClassName;
     saveClasses();
     closePopup();
 }
