@@ -65,10 +65,14 @@ const requestURL =
     const leaveButton =
         createButton('請假', 'leave',
             () => markAttendance('leave', listItem, selectedClass));
+    const resetButton =
+        createButton('重設', 'reset',
+            () => markAttendance('reset', listItem, selectedClass));
 
     listItem.appendChild(absentButton);
     listItem.appendChild(presentButton);
     listItem.appendChild(leaveButton);
+    listItem.appendChild(resetButton); //jt 0928 night
 
     studentsList.appendChild(listItem);
     saveStudentsList(selectedClass);
@@ -113,10 +117,14 @@ function addStudent() {
     const leaveButton =
         createButton('請假', 'leave',
             () => markAttendance('leave', listItem, selectedClass));
+    const resetButton =
+        createButton('重設', 'reset',
+            () => markAttendance('reset', listItem, selectedClass));
 
     listItem.appendChild(absentButton);
     listItem.appendChild(presentButton);
     listItem.appendChild(leaveButton);
+    listItem.appendChild(resetButton); //jt 0928 night
 
     studentsList.appendChild(listItem);
     saveStudentsList(selectedClass);
@@ -327,6 +335,9 @@ function showStudentsList() {
             () => markAttendance('present', listItem, selectedClass));
         const leaveButton = createButton('請假', 'leave', 
             () => markAttendance('leave', listItem, selectedClass));
+        const resetButton =
+        createButton('重設', 'reset',
+            () => markAttendance('reset', listItem, selectedClass));
 
         const savedColor = getSavedColor
             (selectedClass, student.rollNumber);
@@ -337,6 +348,7 @@ function showStudentsList() {
         listItem.appendChild(absentButton);
         listItem.appendChild(presentButton);
         listItem.appendChild(leaveButton);
+        listItem.appendChild(resetButton); //jt 0928 night
 
         studentsList.appendChild(listItem);
     });
@@ -450,6 +462,8 @@ function getStatusColor(status) {
             return '#2ecc71';
         case 'leave':
             return '#f39c12';
+        case 'reset':
+            return 'rgba(0, 0, 0, 0.06)'; //jt 0928 9pm
         default:
             return '';
     }
