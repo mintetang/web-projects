@@ -130,10 +130,10 @@ function addClass() {
     const tempClassName = document.
         getElementById('newClassName').value;
 	const newClassName = `${tempClassName}-${newSession}`;
-	console.log(newClassName);
+	//console.log(newClassName); // jt 0928
 
     if (!newClassName) {
-        alert("Please provide a class name.");
+        alert("請輸入日期.");
         return;
     }
 
@@ -146,6 +146,7 @@ function addClass() {
     newClassOption.text = newClassName;
     classSelector.add(newClassOption);
     classSelector.value = newClassName;
+    showStudentsList();
     saveClasses();
     closePopup();
 }
@@ -300,7 +301,6 @@ function showStudentsList() {
         document.getElementById('classSelector');
     const selectedClass = classSelector.
         options[classSelector.selectedIndex].value;
-
     const studentsList = 
         document.getElementById('studentsList');
     studentsList.innerHTML = '';

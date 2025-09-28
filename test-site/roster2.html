@@ -44,7 +44,7 @@
                 加入新會友
             </button>
 
-            <label for="classSelector">日期和堂次:</label>
+            <label for="classSelector">日期和堂次記錄:</label>
             <select id="classSelector" required 
                 onchange="showStudentsList()">
             </select>
@@ -179,7 +179,7 @@
             取消
         </button>
     </div>
-    <div><button onclick="localStorage.clear();">clean資料 </button> </div>
+    <div><button onclick="localStorage.clear(); document.location.reload();">clean資料 </button> </div>
     <script src="scripts/roster2.js"></script>
 </body>
 
