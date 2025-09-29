@@ -590,7 +590,7 @@ function getSavedColor(selectedClass, rollNumber) {
         savedColors[selectedClass][rollNumber] : null;
 }
 
-function cleanSelectedClass ()
+function cleanSelectedClass()
     {
     const selectedClass = classSelector.
         options[classSelector.selectedIndex].value;
@@ -599,8 +599,9 @@ function cleanSelectedClass ()
             (localStorage.getItem('students')) || {};
 
     const savedStudents2 = delete savedStudents[selectedClass];
+    console.log(savedStudents2);
     localStorage.setItem
-            ('students', JSON.stringify(savedStudents));
+            ('students', JSON.stringify(savedStudents2));
 
     // delete selectedClass
     const localClass = JSON.parse
@@ -612,4 +613,3 @@ function cleanSelectedClass ()
             ('classes', JSON.stringify(localClass2));
     document.location.reload();
     }
-)
