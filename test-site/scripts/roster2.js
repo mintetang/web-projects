@@ -592,6 +592,10 @@ function getSavedColor(selectedClass, rollNumber) {
 
 function cleanSelectedClass()
     {
+    const reCheck = prompt('！！！請輸入"OK"來確認刪除目前的日期出席記錄，確認OK後無法回復！！！');
+     if (reCheck === 'ok') {
+  // Perform actions for cancellation, e.g., stop further processing
+
     const classSelector = 
         document.getElementById('classSelector');
 	const selectedClass = classSelector.
@@ -617,4 +621,7 @@ function cleanSelectedClass()
             ('classes', JSON.stringify(localClass));
     document.location.reload();
 	//localStorage.clear();
+    } else {
+    alert("已經取消.");
     }
+}
