@@ -614,5 +614,5 @@ function cleanSelectedClass()
     localClass2 = localClass.splice(index, 1);
     localStorage.setItem
             ('classes', JSON.stringify(localClass2));
-    document.location.reload();
+    //document.location.reload();
     }
