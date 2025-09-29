@@ -592,11 +592,14 @@ function getSavedColor(selectedClass, rollNumber) {
 
 function cleanSelectedClass()
     {
-    const selectedClass = classSelector.
+    const classSelector = 
+        document.getElementById('classSelector');
+	const selectedClass = classSelector.
         options[classSelector.selectedIndex].value;
+        console.log(selectedClass);
     //delete the studentlist from the selectedClass
     const savedStudents = JSON.parse
-            (localStorage.getItem('students')) || {};
+            (localStorage.getItem('students'));
 
     const savedStudents2 = delete savedStudents[selectedClass];
     console.log(savedStudents2);
