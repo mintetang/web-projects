@@ -31,7 +31,7 @@ const requestURL =
   const response = await fetch(request);
   const rData = await response.json();
     const jsArray = rData.data;
-    console.log(jsArray.length);
+    //console.log(jsArray.length);
     for (let i = 0; i < jsArray.length; i++) {
     const newStudentName = jsArray[i].name;
     const newStudentRoll = jsArray[i].roll;
@@ -596,24 +596,25 @@ function cleanSelectedClass()
         document.getElementById('classSelector');
 	const selectedClass = classSelector.
         options[classSelector.selectedIndex].value;
-        console.log(selectedClass);
+        //console.log(selectedClass);
     //delete the studentlist from the selectedClass
     const savedStudents = JSON.parse
             (localStorage.getItem('students'));
 
-    const savedStudents2 = delete savedStudents[selectedClass];
-    console.log(savedStudents2);
+    delete savedStudents[selectedClass];
+    //console.log(savedStudents);
     localStorage.setItem
-            ('students', JSON.stringify(savedStudents2));
+            ('students', JSON.stringify(savedStudents));
 
     // delete selectedClass
-    const localClass = JSON.parse
+    let localClass = JSON.parse
             (localStorage.getItem('classes'));
 
     index = localClass.findIndex(delClass => delClass === selectedClass);
-    localClass2 = localClass.splice(index, 1);
-    console.log(localClass2);
+    localClass.splice(index, 1);
+    //console.log(localClass);
     localStorage.setItem
-            ('classes', JSON.stringify(localClass2));
-    //document.location.reload();
+            ('classes', JSON.stringify(localClass));
+    document.location.reload();
+	//localStorage.clear();
     }
