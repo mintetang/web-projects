@@ -589,3 +589,27 @@ function getSavedColor(selectedClass, rollNumber) {
     return savedColors[selectedClass] ? 
         savedColors[selectedClass][rollNumber] : null;
 }
+
+function cleanSelectedClass ()
+    {
+    const selectedClass = classSelector.
+        options[classSelector.selectedIndex].value;
+    //delete the studentlist from the selectedClass
+    const savedStudents = JSON.parse
+            (localStorage.getItem('students')) || {};
+
+    const savedStudents2 = delete savedStudents[selectedClass];
+    localStorage.setItem
+            ('students', JSON.stringify(savedStudents));
+
+    // delete selectedClass
+    const localClass = JSON.parse
+            (localStorage.getItem('classes'));
+
+    index = localClass.findIndex(delClass => delClass === selectedClass);
+    localClass2 = localClass.splice(index, 1);
+    localStorage.setItem
+            ('classes', JSON.stringify(localClass2));
+    document.location.reload();
+    }
+)
