@@ -592,9 +592,9 @@ function getSavedColor(selectedClass, rollNumber) {
 
 function cleanSelectedClass()
     {
-    const reCheck = prompt('！！！請輸入"OK"來確認刪除目前的日期出席記錄，確認OK後無法回復！！！');
+    const reCheck = prompt('！！！請輸入"CONFIRM"來確認刪除目前的日期出席記錄，確認後"無法回復"！！！');
     console.log(reCheck); 
-    if (reCheck === 'OK') {
+    if (reCheck === 'CONFIRM') {
   // Perform actions for cancellation, e.g., stop further processing
 
     const classSelector = 
