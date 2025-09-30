@@ -22,26 +22,25 @@ function showAddClassForm() {
 }
 
 async function addOrg() {
-    // Get input values
-    //const jsonArrayString = '[{"name":"Q0", "roll":"10"},{"name":"Q1", "roll":"11"},{"name":"Q2", "roll":"12"}]';
-    //const jsArray = JSON.parse(jsonArrayString);
-/*const requestURL =
-     "https://mintetang.github.io/web-projects/test-site/scripts/nameroll1.json";
-  const request = new Request(requestURL);
-  const response = await fetch(request);
-  const rData = await response.json();
-  const jsArray = rData.data;*/
+    const requestURL =
+        "https://mintetang.github.io/web-projects/test-site/scripts/nameroll1.json";
+    const request = new Request(requestURL);
+    const response = await fetch(request);
+    const rData = await response.json();
+    const jsArray = rData.data;
+    localStorage.setItem
+            ('students', JSON.stringify(jsArray));
     const classSelector = 
         document.getElementById('classSelector');
 	const selectedClass = classSelector.
         options[classSelector.selectedIndex-1].value;
     const savedStudents = JSON.parse
             (localStorage.getItem('students'));
-    const jsArray = savedStudents[selectedClass];
-    console.log(jsArray.length);
-    for (let i = 0; i < jsArray.length; i++) {
-    const newStudentName = jsArray[i].name;
-    const newStudentRoll = jsArray[i].rollNumber;
+    const orgArray = savedStudents[selectedClass];
+    //console.log(jsArray.length);
+    for (let i = 0; i < stdArray.length; i++) {
+    const newStudentName = orgArray[i].name;
+    const newStudentRoll = orgArray[i].rollNumber;
     if (!newStudentName || !newStudentRoll) {
         alert("Missing name or roll number.");
         return;
