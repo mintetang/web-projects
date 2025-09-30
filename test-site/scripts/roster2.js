@@ -34,7 +34,7 @@ async function addOrg() {
     const classSelector = 
         document.getElementById('classSelector');
 	const selectedClass = classSelector.
-        options[classSelector.selectedIndex].value;
+        options[classSelector.selectedIndex-1].value;
     const savedStudents = JSON.parse
             (localStorage.getItem('students'));
     const jsArray = savedStudents[selectedClass];
