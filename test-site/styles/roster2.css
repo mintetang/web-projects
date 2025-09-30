@@ -106,7 +106,7 @@ button {
     color: #fff;
     padding: 10px;
     cursor: pointer;
-    margin: 10px;
+    margin: 10px 10px;
 }
 
 button:hover {
@@ -119,6 +119,7 @@ button.leave,
 button.reset {
     background-color: rgba(0, 0, 0, 0.32);
     border:solid;
+    margin: 0 10px;
 }
 
 button#clean {
