@@ -41,7 +41,7 @@ async function addOrg() {
     console.log(jsArray.length);
     for (let i = 0; i < jsArray.length; i++) {
     const newStudentName = jsArray[i].name;
-    const newStudentRoll = jsArray[i].roll;
+    const newStudentRoll = jsArray[i].rollNumber;
     if (!newStudentName || !newStudentRoll) {
         alert("Missing name or roll number.");
         return;
