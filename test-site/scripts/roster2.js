@@ -38,7 +38,7 @@ async function addOrg() {
             (localStorage.getItem('students'));
     const orgArray = savedStudents[selectedClass];
     //console.log(jsArray.length);*/
-    for (let i = 0; i < jsArrayArray.length; i++) {
+    for (let i = 0; i < jsArray.length; i++) {
     const newStudentName = jsArray[i].name;
     const newStudentRoll = jsArray[i].rollNumber;
     if (!newStudentName || !newStudentRoll) {
