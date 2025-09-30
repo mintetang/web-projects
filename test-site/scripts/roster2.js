@@ -25,13 +25,20 @@ async function addOrg() {
     // Get input values
     //const jsonArrayString = '[{"name":"Q0", "roll":"10"},{"name":"Q1", "roll":"11"},{"name":"Q2", "roll":"12"}]';
     //const jsArray = JSON.parse(jsonArrayString);
-const requestURL =
+/*const requestURL =
      "https://mintetang.github.io/web-projects/test-site/scripts/nameroll1.json";
   const request = new Request(requestURL);
   const response = await fetch(request);
   const rData = await response.json();
-    const jsArray = rData.data;
-    //console.log(jsArray.length);
+  const jsArray = rData.data;*/
+    const classSelector = 
+        document.getElementById('classSelector');
+	const selectedClass = classSelector.
+        options[classSelector.selectedIndex].value;
+    const savedStudents = JSON.parse
+            (localStorage.getItem('students'));
+    const jsArray = savedStudents[selectedClass];
+    console.log(jsArray.length);
     for (let i = 0; i < jsArray.length; i++) {
     const newStudentName = jsArray[i].name;
     const newStudentRoll = jsArray[i].roll;
