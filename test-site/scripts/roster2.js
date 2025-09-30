@@ -33,14 +33,14 @@ async function addOrg() {
     const classSelector = 
         document.getElementById('classSelector');
 	const selectedClass = classSelector.
-        options[classSelector.selectedIndex-1].value;
-    const savedStudents = JSON.parse
+        options[classSelector.selectedIndex].value;
+    /*const savedStudents = JSON.parse
             (localStorage.getItem('students'));
     const orgArray = savedStudents[selectedClass];
-    //console.log(jsArray.length);
-    for (let i = 0; i < stdArray.length; i++) {
-    const newStudentName = orgArray[i].name;
-    const newStudentRoll = orgArray[i].rollNumber;
+    //console.log(jsArray.length);*/
+    for (let i = 0; i < jsArrayArray.length; i++) {
+    const newStudentName = jsArray[i].name;
+    const newStudentRoll = jsArray[i].rollNumber;
     if (!newStudentName || !newStudentRoll) {
         alert("Missing name or roll number.");
         return;
