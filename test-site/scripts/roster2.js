@@ -28,10 +28,6 @@ async function addOrg() {
     const response = await fetch(request);
     const rData = await response.json();
     const jsArray = rData.data;
-    const classSelector = 
-        document.getElementById('classSelector');
-	const selectedClass = classSelector.
-        options[classSelector.selectedIndex].value;
     /*const savedStudents = JSON.parse
             (localStorage.getItem('students'));
     const orgArray = savedStudents[selectedClass];
