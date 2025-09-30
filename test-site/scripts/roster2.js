@@ -28,8 +28,6 @@ async function addOrg() {
     const response = await fetch(request);
     const rData = await response.json();
     const jsArray = rData.data;
-    localStorage.setItem
-            ('students', JSON.stringify(jsArray));
     const classSelector = 
         document.getElementById('classSelector');
 	const selectedClass = classSelector.
@@ -38,7 +36,8 @@ async function addOrg() {
             (localStorage.getItem('students'));
     const orgArray = savedStudents[selectedClass];
     //console.log(jsArray.length);*/
-    for (let i = 0; i < jsArray.length; i++) {
+    for (let i = 0; i < jsArray.length; i++) 
+        {
     const newStudentName = jsArray[i].name;
     const newStudentRoll = jsArray[i].rollNumber;
     if (!newStudentName || !newStudentRoll) {
@@ -83,6 +82,7 @@ async function addOrg() {
     studentsList.appendChild(listItem);
     saveStudentsList(selectedClass);
     }
+    showStudentsList();
     closePopup();
 }
 
