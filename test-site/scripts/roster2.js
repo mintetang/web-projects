@@ -10,6 +10,11 @@ function showAddStudentOrgForm() {
         style.display = 'block';
 }
 
+function showreadOrgForm() {
+    document.getElementById('readOrgPopup').
+        style.display = 'block';
+}
+
 function showAddStudentForm() {
     document.getElementById('addStudentPopup').
         style.display = 'block';
@@ -19,6 +24,68 @@ function showAddClassForm() {
     // Show the add class popup
     document.getElementById('addClassPopup').
         style.display = 'block';
+}
+function readOrg() {
+    console.log("read last one");
+    let readClass = classSelector.
+        options[classSelector.selectedIndex-1].value;
+
+    const readStudents = JSON.parse
+            (localStorage.getItem('students'));
+
+    console.log(readStudents);
+    // {2025-09-08-第2堂: Array(9), 2025-09-15-第2堂: Array(10)}
+
+    jsArray = readStudents[readClass];
+
+    for (let i = 0; i < jsArray.length; i++) 
+        {
+    const newStudentName = jsArray[i].name;
+    const newStudentRoll = jsArray[i].rollNumber;
+    if (!newStudentName || !newStudentRoll) {
+        alert("Missing name or roll number.");
+        return;
+    }
+
+    // Add the new student to the list
+    const classSelector = document.
+        getElementById('classSelector');
+    const selectedClass = classSelector.
+        options[classSelector.selectedIndex].value;
+    const studentsList = document.
+        getElementById('studentsList');
+
+    const listItem = document.createElement('li');
+    listItem.setAttribute('data-roll-number', newStudentRoll);
+    listItem.innerHTML =
+        `<strong>
+            ${newStudentName}
+        </strong> 
+        (Roll No. ${newStudentRoll})`;
+
+    const absentButton =
+        createButton('缺席', 'absent',
+            () => markAttendance('absent', listItem, selectedClass));
+    const presentButton =
+        createButton('出席', 'present',
+            () => markAttendance('present', listItem, selectedClass));
+    const leaveButton =
+        createButton('請假', 'leave',
+            () => markAttendance('leave', listItem, selectedClass));
+    const resetButton =
+        createButton('重設', 'reset',
+            () => markAttendance('reset', listItem, selectedClass));
+
+    listItem.appendChild(absentButton);
+    listItem.appendChild(presentButton);
+    listItem.appendChild(leaveButton);
+    listItem.appendChild(resetButton); //jt 0928 night
+
+    studentsList.appendChild(listItem);
+    saveStudentsList(selectedClass);
+    }
+    //showStudentsList();
+    closePopup();
 }
 
 async function addOrg() {
@@ -78,7 +145,7 @@ async function addOrg() {
     studentsList.appendChild(listItem);
     saveStudentsList(selectedClass);
     }
-    showStudentsList();
+    //showStudentsList();
     closePopup();
 }
 
@@ -278,6 +345,8 @@ function closePopup() {
     document.getElementById('addClassPopup').
         style.display = 'none';
     document.getElementById('addStudentOrgPopup').
+        style.display = 'none';
+    document.getElementById('readOrgPopup').
         style.display = 'none';
 }
 

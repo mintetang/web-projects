@@ -35,9 +35,13 @@
                 onclick="showAddClassForm()">
                 1 加入紀錄
             </button>
+            <button id="readOrgButton" 
+                onclick="showreadOrgForm()">
+                2 read last one
+            </button>
             <button id="addStudentOrgButton" 
                 onclick="showAddStudentOrgForm()">
-                2 匯入名單
+                2A 匯入名單
             </button>
             <button id="addStudentButton" 
                 onclick="showAddStudentForm()">
@@ -132,6 +136,26 @@
              <button onclick="showStudentsList()">-->
 
         <button onclick="addOrg()">
+            確認
+        </button>
+        <button onclick="closePopup()">
+            取消
+        </button>
+    </div>
+
+    <div id="readOrgPopup" class="popup">
+        <h2>READ</h2>
+        <!-- Add all org memebers from json -->
+        <label for="rl">
+            READ LAST 名單?
+        </label>
+        <input type="file" hidden id="rl">
+
+        <!-- Add more fields as needed 
+         <button onclick="addOrg()">
+             <button onclick="showStudentsList()">-->
+
+        <button onclick="readOrg()">
             確認
         </button>
         <button onclick="closePopup()">
