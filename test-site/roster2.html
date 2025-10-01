@@ -33,21 +33,20 @@
             <h2>出席記錄</h2>
             <button id="addClassButton" 
                 onclick="showAddClassForm()">
-                1 加入新紀錄日期
+                1 加入紀錄
             </button>
             <button id="readOrgButton" 
                 onclick="showreadOrgForm()">
-                2 使用上次會友名單
+                2 read last one
             </button>
             <button id="addStudentOrgButton" 
                 onclick="showAddStudentOrgForm()">
-                2A 匯入初始會友名單
+                2A 匯入名單
             </button>
             <button id="addStudentButton" 
                 onclick="showAddStudentForm()">
                 3 加入新會友
             </button>
-
             <label for="classSelector">日期和堂次記錄:</label>
             <select id="classSelector" required 
                 onchange="showStudentsList()">
@@ -119,15 +118,19 @@
                     Leave: 
                     <span id="attendanceLeave"></span>
                 </p>
+                <p>
+                    AttendRate: 
+                    <span id="attendanceRate"></span>
+                </p>
             </div>
         </div>
     </div>
 
     <div id="addStudentOrgPopup" class="popup">
-        <h2>初始會友名單</h2>
+        <h2>會友名單</h2>
         <!-- Add all org memebers from json -->
         <label for="org">
-            確認匯入初始會友名單?
+            匯入會友名單?
         </label>
         <input type="file" hidden id="org">
 
@@ -144,10 +147,10 @@
     </div>
 
     <div id="readOrgPopup" class="popup">
-        <h2>上次名單</h2>
+        <h2>READ</h2>
         <!-- Add all org memebers from json -->
         <label for="rl">
-            使用上次會友名單?
+            READ LAST 名單?
         </label>
         <input type="file" hidden id="rl">
 
@@ -164,7 +167,7 @@
     </div>
 
     <div id="addClassPopup" class="popup">
-        <h2>加入紀錄日期</h2>
+        <h2>加入日期</h2>
         <!-- Add Class Form Content -->
         <label for="newClassName">
             日期:
@@ -208,6 +211,5 @@
     <div><button id="clean" onclick="cleanSelectedClass()">刪除出席記錄 </button> </div>
     <script src="scripts/roster2.js"></script>
 </body>
-
 
 </html>

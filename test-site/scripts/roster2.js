@@ -333,6 +333,8 @@ function showAttendanceResult(selectedClass) {
         innerText = totalAbsent;
     document.getElementById('attendanceLeave').
         innerText = totalLeave;
+    document.getElementById('attendanceRate').
+        innerText = `${totalPresent/totalStudents*100}%`;
 
     // Show the attendance result section
     resultSection.style.display = 'block';
@@ -444,7 +446,7 @@ function showStudentsList() {
     }
 }
 
-function showAttendanceResult(selectedClass) {
+/*function showAttendanceResult(selectedClass) {
     const resultSection = 
         document.getElementById('resultSection');
 
@@ -488,7 +490,8 @@ function showAttendanceResult(selectedClass) {
         `Date: ${date} | Time: ${time} | 
         Total Students: ${totalStudents} | 
         Present: ${totalPresent} | 
-        Absent: ${totalAbsent} | Leave: ${totalLeave}`;
+        Absent: ${totalAbsent} | Leave: ${totalLeave} |
+        Attending Rate ${totalPresent/totalStudents*100}%`;
     resultSection.innerHTML = resultContent;
 
     // Show the result section
@@ -500,7 +503,7 @@ function showAttendanceResult(selectedClass) {
     resultSection.insertAdjacentHTML
         ('afterend', studentsListHTML);
 }
-
+*/
 
 function markAttendance
     (status, listItem, selectedClass) {
