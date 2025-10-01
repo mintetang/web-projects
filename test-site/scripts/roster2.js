@@ -293,11 +293,9 @@ function showAttendanceResult(selectedClass) {
         `${now.getFullYear()}-${String(now.getMonth() + 1).
         padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     const time =
-        `${String(now.getHours()).padStart(2, '0')}:
-        ${String(now.getMinutes()).padStart(2, '0')}:
-        ${String(now.getSeconds()).padStart(2, '0')}`;
+        `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
 
-    // Retrieve attendance data from local storage
+	// Retrieve attendance data from local storage
     const savedAttendanceData = JSON.parse
         (localStorage.getItem('attendanceData')) || [];
     const filteredAttendanceData = savedAttendanceData.
@@ -699,4 +697,5 @@ function cleanSelectedClass()
     } else {
     alert("已經取消.");
     }
+
 }
