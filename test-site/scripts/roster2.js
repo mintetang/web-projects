@@ -27,9 +27,16 @@ function showAddClassForm() {
 }
 function readOrg() {
     console.log("read last one");
+	if (!classSelector || !classSelector.options ||
+        classSelector.selectedIndex-1 === -1) {
+        console.error
+            ('no previous class.');
+            return;
+        } else 
+    {
     let readClass = classSelector.
         options[classSelector.selectedIndex-1].value;
-
+	
     const readStudents = JSON.parse
             (localStorage.getItem('students'));
 
@@ -83,7 +90,8 @@ function readOrg() {
 
     studentsList.appendChild(listItem);
     saveStudentsList(selectedClass);
-    }
+        }
+	}
     //showStudentsList();
     closePopup();
 }
@@ -699,3 +707,4 @@ function cleanSelectedClass()
     }
 
 }
+
