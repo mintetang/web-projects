@@ -34,6 +34,7 @@ function readOrg() {
             return;
         } else 
     {
+		console.log(classSelector.selectedIndex-1);
     let readClass = classSelector.
         options[classSelector.selectedIndex-1].value;
 	
@@ -707,4 +708,5 @@ function cleanSelectedClass()
     }
 
 }
+
 
