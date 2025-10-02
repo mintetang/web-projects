@@ -310,13 +310,6 @@ function showAttendanceResult(selectedClass) {
     const filteredAttendanceData = savedAttendanceData.
         filter(record => record.class === selectedClass);
 
-    const totalStudents = filteredAttendanceData.
-    reduce((acc, record) => {
-        if (!acc.includes(record.name)) {
-            acc.push(record.name);
-        }
-        return acc;
-    }, []).length;
 
     const totalPresent = filteredAttendanceData.
         filter(record => record.status === 'present').length;
@@ -324,6 +317,16 @@ function showAttendanceResult(selectedClass) {
         filter(record => record.status === 'absent').length;
     const totalLeave = filteredAttendanceData.
         filter(record => record.status === 'leave').length;
+    const totalReset = filteredAttendanceData.
+        filter(record => record.status === 'reset').length; //jt 1002
+
+    const totalStudents = filteredAttendanceData.
+    reduce((acc, record) => {
+        if (!acc.includes(record.name)) {
+            acc.push(record.name);
+        }
+        return acc;
+    }, []).length - totalReset;
 
     // Update the result section
     document.getElementById('attendanceDate').
@@ -341,7 +344,7 @@ function showAttendanceResult(selectedClass) {
     document.getElementById('attendanceLeave').
         innerText = totalLeave;
     document.getElementById('attendanceRate').
-        innerText = `${totalPresent/totalStudents*100}%`;
+        innerText = Math.round(`${totalPresent/totalStudents*100}`)+'%';
 
     // Show the attendance result section
     resultSection.style.display = 'block';
@@ -544,7 +547,8 @@ function getStatusColor(status) {
         case 'leave':
             return '#f39c12';
         case 'reset':
-            return 'rgba(0, 0, 0, 0.06)'; //jt 0928 9pm
+            //return 'rgba(0, 0, 0, 0.06)'; //jt 0928 9pm
+            return '';
         default:
             return '';
     }
@@ -589,13 +593,6 @@ function showSummary(selectedClass) {
     const filteredAttendanceData = savedAttendanceData.
         filter(record => record.class === selectedClass);
 
-    const totalStudents = filteredAttendanceData.
-    reduce((acc, record) => {
-        if (!acc.includes(record.name)) {
-            acc.push(record.name);
-        }
-        return acc;
-    }, []).length;
 
     const totalPresent = filteredAttendanceData.
         filter(record => record.status === 'present').length;
@@ -603,6 +600,16 @@ function showSummary(selectedClass) {
         filter(record => record.status === 'absent').length;
     const totalLeave = filteredAttendanceData.
         filter(record => record.status === 'leave').length;
+    const totalReset = filteredAttendanceData.
+        filter(record => record.status === 'reset').length; //jt 1002
+
+    const totalStudents = filteredAttendanceData.
+    reduce((acc, record) => {
+        if (!acc.includes(record.name)) {
+            acc.push(record.name);
+        }
+        return acc;
+    }, []).length - totalReset;
 
     document.getElementById('totalStudents').
         innerText = totalStudents;
