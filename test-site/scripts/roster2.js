@@ -29,8 +29,8 @@ function readOrg() {
     console.log("read last one");
 	if (!classSelector || !classSelector.options ||
         classSelector.selectedIndex-1 === -1) {
-        console.error
-            ('no previous class.');
+        alert
+            ('上次會友名單不存在！');
             return;
         } else 
     {
@@ -708,5 +708,6 @@ function cleanSelectedClass()
     }
 
 }
+
 
 
