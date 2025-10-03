@@ -127,6 +127,13 @@ button#clean {
     border:solid;
 }
 
+button#exlocal {
+    background-color: #1a8b4f;
+    border:solid;
+    display:inline-flexbox;
+    float:right;
+}
+
 
 /* Responsive styles for mobile view */
 @media screen and (max-width: 600px) {
@@ -157,17 +164,15 @@ button#clean {
 }
 
 #summarySection {
-    margin: 20px 0 20px;
     border: dashed 2px rgba(21, 15, 204, 0.32);
 }
 
 #summarySection p {
-    margin: 5px;
+    margin: 20px;
     display: inline-block
 }
 
 #summarySection span {
-    margin-right: 2em;
     color:#8b1a1a;
     font-weight: bold;
 }

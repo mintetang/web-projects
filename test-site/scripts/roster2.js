@@ -717,4 +717,32 @@ function cleanSelectedClass()
 }
 
 
+function exportLocalStorage() {
+  // 1. Get all localStorage data
+  const localStorageData = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    localStorageData[key] = localStorage.getItem(key);
+  }
+
+  // 2. Convert to a JSON string
+  const jsonString = JSON.stringify(localStorageData, null, 4);
+
+  // 3. Create a Blob and URL
+  const blob = new Blob([jsonString], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+
+  // 4. Create and click a download link
+  const downloadLink = document.createElement('a');
+  downloadLink.href = url;
+  downloadLink.download = 'localStorage_export.json';
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
+  
+  alert('Your localStorage data has been exported to localStorage_export.json');
+}
+
+// To run, simply call the function:
+// exportLocalStorage();
 
