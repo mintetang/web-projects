@@ -39,6 +39,7 @@
                 onclick="showreadOrgForm()">
                 2 使用上次會友名單
             </button>
+            
             <button id="addStudentOrgButton" 
                 onclick="showAddStudentOrgForm()">
                 2A 匯入初始名單
@@ -166,6 +167,26 @@
         </button>
     </div>
 
+    <div id="readPopup" class="popup">
+        <h2>select json file</h2>
+        <!-- Add all org memebers from json -->
+        <label for="rf">
+            select json file
+        </label>
+        <input type="file" id="rf">
+
+        <!-- Add more fields as needed 
+         <button onclick="addOrg()">
+             <button onclick="showStudentsList()">-->
+
+        <button onclick="readJs()">
+            確認
+        </button>
+        <button onclick="closePopup()">
+            取消
+        </button>
+    </div>
+
     <div id="addClassPopup" class="popup">
         <h2>加入日期</h2>
         <!-- Add Class Form Content -->
@@ -208,8 +229,19 @@
             取消
         </button>
     </div>
-    <div><button id="clean" onclick="cleanSelectedClass()">刪除出席記錄 </button>
-    <button id="exlocal" onclick="exportLocalStorage()">Export Record </button> </div>
+    <div>
+        <button id="clean" 
+        onclick="cleanSelectedClass()">刪除出席記錄 
+        </button>
+        <button id="inlocal hidden" 
+                onclick="showreadForm()">
+                Import Record
+        </button>
+        <button id="exlocal" 
+        onclick="exportLocalStorage()">
+        Export Record 
+        </button> 
+    </div>
     <script src="scripts/roster2.js"></script>
 </body>
 

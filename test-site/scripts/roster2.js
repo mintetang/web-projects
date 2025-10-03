@@ -15,6 +15,11 @@ function showreadOrgForm() {
         style.display = 'block';
 }
 
+function showreadForm() {
+    document.getElementById('readPopup').
+        style.display = 'block';
+}
+
 function showAddStudentForm() {
     document.getElementById('addStudentPopup').
         style.display = 'block';
@@ -359,6 +364,8 @@ function closePopup() {
     document.getElementById('addStudentOrgPopup').
         style.display = 'none';
     document.getElementById('readOrgPopup').
+        style.display = 'none';
+    document.getElementById('readPopup').
         style.display = 'none';
 }
 
@@ -735,14 +742,31 @@ function exportLocalStorage() {
   // 4. Create and click a download link
   const downloadLink = document.createElement('a');
   downloadLink.href = url;
-  downloadLink.download = 'localStorage_export.json';
+  downloadLink.download = 'data.json';
   document.body.appendChild(downloadLink);
   downloadLink.click();
   document.body.removeChild(downloadLink);
   
-  alert('Your localStorage data has been exported to localStorage_export.json');
+  alert('Your localStorage data has been exported to data.json');
 }
 
-// To run, simply call the function:
-// exportLocalStorage();
+async function readJs() {
+    //console.log("read a JSON file from file selection");
+    const fileInput = document.getElementById('rf');
+    console.log(fileInput);
+    fileInput.addEventListener('change', (event) => {
+        const selectedFile = event.target.files[0];
+        localStorage.setItem("students", selectedFile);
+        if (selectedFile) {
+            console.log('Selected file name:', selectedFile.name);
+            console.log('Selected file type:', selectedFile.type);
+            console.log('Selected file size:', selectedFile.size, 'bytes');
+// You can now proceed to read the file content
+        } else {
+            console.log('No file selected.');
+        }
+        console.log(selectedFile);
+    });
 
+    closePopup();
+}
