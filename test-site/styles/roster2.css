@@ -138,6 +138,7 @@ button#clean {
 
 #resultSection {
     margin-top: 20px;
+    border: solid 1px rgba(21, 15, 204, 0.32);
 }
 
 #resultSection h3 {
@@ -145,9 +146,12 @@ button#clean {
 }
 
 #resultSection p {
-    margin-bottom: 5px;
+    margin: 5px;
+    display: inline-block
 }
 
 #resultSection span {
+    margin-right: 2em;
+    color:#8b1a1a;
     font-weight: bold;
 }

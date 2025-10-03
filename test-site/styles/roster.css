@@ -76,3 +76,10 @@ li {
   background-color: #4a2db6;
   color: white;
 }
+
+#resultSectin {
+  display: block;
+  border: 2px solid rgba(10, 57, 223, 0.215);
+  background-color: #4a2db6;
+  color: white;
+}
