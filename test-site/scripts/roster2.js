@@ -115,7 +115,7 @@ function std(a, b) {
         `<strong>
             ${newStudentName}
         </strong> 
-        (Roll No. ${newStudentRoll})`;
+        (#${newStudentRoll})`;
 
     const absentButton =
         createButton('缺席', 'absent',
@@ -318,11 +318,11 @@ function populateClasses() {
         classSelector.add(newClassOption);
     });
     let ln = classSelector.options.length;
-    console.log(ln);
+    //console.log(ln);
     const selectedClass = classSelector.
         options[classSelector.selectedIndex+ln-1].value;
     classSelector.value = selectedClass;
-    console.log(classSelector.value);
+    //console.log(classSelector.value);
 }
 
 function showStudentsList() {
@@ -348,7 +348,7 @@ function showStudentsList() {
             `<strong>
                 ${student.name}
             </strong> 
-            (Roll No. ${student.rollNumber})`;
+            (#${student.rollNumber})`;
 
         const absentButton = createButton('缺席', 'absent', 
             () => markAttendance('absent', listItem, selectedClass));
