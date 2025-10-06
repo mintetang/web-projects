@@ -678,18 +678,13 @@ function exportLocalStorage() {
   downloadLink.click();
   document.body.removeChild(downloadLink);
   
-  alert('Your localStorage data has been exported to data.json');
+  //alert('Your localStorage data has been exported to data.json');
 }
 
 function readJs() {
     //console.log("read a JSON file from file selection");
     const fileInput = document.getElementById('fileInput');
-    fileInput.addEventListener('change', handleFileSelect);
-    console.log(fileInput.value);
-    closePopup();
-}
-
-    function handleFileSelect(event) {
+    fileInput.addEventListener('change', (event) => {
         const file = event.target.files[0]; // Get the first selected file
 console.log(file);
         if (file) {
@@ -714,4 +709,7 @@ console.log(file);
         } else {
             console.log('No file selected.');
         }
-    }
+    console.log(fileInput.value);
+    });
+    closePopup();
+}
