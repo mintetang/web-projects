@@ -681,35 +681,30 @@ function exportLocalStorage() {
   //alert('Your localStorage data has been exported to data.json');
 }
 
-function readJs() {
-    //console.log("read a JSON file from file selection");
-    const fileInput = document.getElementById('fileInput');
-    fileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0]; // Get the first selected file
-console.log(file);
-        if (file) {
-            const reader = new FileReader();
+function rlsFromFile(event) {
+    const file = event.target.files[0];
+    if (!file) {
+        return;
+    }
 
-            reader.onload = function(e) {
-                const fileContent = e.target.result;
-                // Process the file content here (e.g., display it, parse it)
-               console.log(fileContent);
-               //const jsArray = JSON.parse(fileContent);
-               //console.log(jsArray);
-            };
-
-
-            // Choose the appropriate method to read the file:
-            // For text files:
-            reader.readAsText(file);
-            // For binary files (as a data URL, e.g., images):
-            // reader.readAsDataURL(file);
-            // For binary files (as an ArrayBuffer):
-            // reader.readAsArrayBuffer(file);
-        } else {
-            console.log('No file selected.');
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+            localStorage.clear(); // Clear existing localStorage before restoring
+            for (const key in data) {
+                localStorage.setItem(key, data[key]);
+            }
+            console.log('localStorage restored successfully!');
+            alert('成功讀回出席紀錄!');
+            location.reload();
+        } catch (error) {
+            console.error('Error parsing or restoring localStorage:', error);
         }
-    console.log(fileInput.value);
-    });
+    };
+    reader.readAsText(file);
     closePopup();
 }
+
+// HTML for file input:
+// <input type="file" id="restoreFileInput" accept=".json" onchange="rlsFromFile(event)">

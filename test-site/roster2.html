@@ -170,18 +170,16 @@
     <div id="readPopup" class="popup">
         <h2>select json file</h2>
         <!-- Add all org memebers from json -->
-        <label for="fileInput">
+        <label for="restoreFileInput">
             select json file
         </label>
-        <input type="file" id="fileInput" >
+        <input type="file" id="restoreFileInput" 
+        accept=".json" onchange="rlsFromFile(event)">
 
         <!-- Add more fields as needed 
          <button onclick="addOrg()">
              <button onclick="showStudentsList()">-->
 
-        <button onclick="readJs()">
-            確認
-        </button>
         <button onclick="closePopup()">
             取消
         </button>
@@ -233,13 +231,13 @@
         <button id="clean" 
         onclick="cleanSelectedClass()">刪除出席記錄 
         </button>
-        <!--<button id="inlocal"
+        <button id="inlocal"
                 onclick="showreadForm()">
-                Import Record
-        </button> -->
+                讀回出席紀錄
+        </button>     
         <button id="exlocal" 
         onclick="exportLocalStorage()">
-        Export Record 
+        儲存和輸出出席紀錄 
         </button> 
     </div>
     <script src="scripts/roster2.js"></script>
