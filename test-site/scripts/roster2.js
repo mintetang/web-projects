@@ -36,8 +36,8 @@ function readOrg() {
         classSelector.selectedIndex-1 === -1) {
         alert
             ('上次會友名單不存在！');
-            return;
-        } else 
+            return;} 
+    else 
     {
 		console.log(classSelector.selectedIndex-1);
     let readClass = classSelector.
@@ -52,54 +52,14 @@ function readOrg() {
     jsArray = readStudents[readClass];
 
     for (let i = 0; i < jsArray.length; i++) 
-        {
-    const newStudentName = jsArray[i].name;
+        {const newStudentName = jsArray[i].name;
     const newStudentRoll = jsArray[i].rollNumber;
     if (!newStudentName || !newStudentRoll) {
         alert("Missing name or roll number.");
-        return;
+        return; }
+    std(newStudentName, newStudentRoll);
+	    }
     }
-
-    // Add the new student to the list
-    const classSelector = document.
-        getElementById('classSelector');
-    const selectedClass = classSelector.
-        options[classSelector.selectedIndex].value;
-    const studentsList = document.
-        getElementById('studentsList');
-
-    const listItem = document.createElement('li');
-    listItem.setAttribute('data-roll-number', newStudentRoll);
-    listItem.innerHTML =
-        `<strong>
-            ${newStudentName}
-        </strong> 
-        (Roll No. ${newStudentRoll})`;
-
-    const absentButton =
-        createButton('缺席', 'absent',
-            () => markAttendance('absent', listItem, selectedClass));
-    const presentButton =
-        createButton('出席', 'present',
-            () => markAttendance('present', listItem, selectedClass));
-    const leaveButton =
-        createButton('請假', 'leave',
-            () => markAttendance('leave', listItem, selectedClass));
-    const resetButton =
-        createButton('重設', 'reset',
-            () => markAttendance('reset', listItem, selectedClass));
-
-    listItem.appendChild(absentButton);
-    listItem.appendChild(presentButton);
-    listItem.appendChild(leaveButton);
-    listItem.appendChild(resetButton); //jt 0928 night
-
-    studentsList.appendChild(listItem);
-    saveStudentsList(selectedClass);
-        }
-	}
-    //showStudentsList();
-    closePopup();
 }
 
 async function addOrg() {
@@ -119,48 +79,8 @@ async function addOrg() {
     const newStudentRoll = jsArray[i].rollNumber;
     if (!newStudentName || !newStudentRoll) {
         alert("Missing name or roll number.");
-        return;
-    }
-
-    // Add the new student to the list
-    const classSelector = document.
-        getElementById('classSelector');
-    const selectedClass = classSelector.
-        options[classSelector.selectedIndex].value;
-    const studentsList = document.
-        getElementById('studentsList');
-
-    const listItem = document.createElement('li');
-    listItem.setAttribute('data-roll-number', newStudentRoll);
-    listItem.innerHTML =
-        `<strong>
-            ${newStudentName}
-        </strong> 
-        (Roll No. ${newStudentRoll})`;
-
-    const absentButton =
-        createButton('缺席', 'absent',
-            () => markAttendance('absent', listItem, selectedClass));
-    const presentButton =
-        createButton('出席', 'present',
-            () => markAttendance('present', listItem, selectedClass));
-    const leaveButton =
-        createButton('請假', 'leave',
-            () => markAttendance('leave', listItem, selectedClass));
-    const resetButton =
-        createButton('重設', 'reset',
-            () => markAttendance('reset', listItem, selectedClass));
-
-    listItem.appendChild(absentButton);
-    listItem.appendChild(presentButton);
-    listItem.appendChild(leaveButton);
-    listItem.appendChild(resetButton); //jt 0928 night
-
-    studentsList.appendChild(listItem);
-    saveStudentsList(selectedClass);
-    }
-    //showStudentsList();
-    closePopup();
+        return;}
+    std(newStudentName, newStudentRoll);}
 }
 
 function addStudent() {
@@ -174,7 +94,13 @@ function addStudent() {
         alert("Please provide both name and roll number.");
         return;
     }
+    std(newStudentName, newStudentRoll);
+    
+}
 
+function std(a, b) {
+    const newStudentName = a;
+    const newStudentRoll = b;
     // Add the new student to the list
     const classSelector = document.
         getElementById('classSelector');
@@ -189,7 +115,7 @@ function addStudent() {
         `<strong>
             ${newStudentName}
         </strong> 
-        (Roll No. ${newStudentRoll})`;
+        (#${newStudentRoll})`;
 
     const absentButton =
         createButton('缺席', 'absent',
@@ -208,7 +134,6 @@ function addStudent() {
     listItem.appendChild(presentButton);
     listItem.appendChild(leaveButton);
     listItem.appendChild(resetButton); //jt 0928 night
-
     studentsList.appendChild(listItem);
     saveStudentsList(selectedClass);
     closePopup();
@@ -392,6 +317,12 @@ function populateClasses() {
         newClassOption.text = className;
         classSelector.add(newClassOption);
     });
+    let ln = classSelector.options.length;
+    //console.log(ln);
+    const selectedClass = classSelector.
+        options[classSelector.selectedIndex+ln-1].value;
+    classSelector.value = selectedClass;
+    //console.log(classSelector.value);
 }
 
 function showStudentsList() {
@@ -417,7 +348,7 @@ function showStudentsList() {
             `<strong>
                 ${student.name}
             </strong> 
-            (Roll No. ${student.rollNumber})`;
+            (#${student.rollNumber})`;
 
         const absentButton = createButton('缺席', 'absent', 
             () => markAttendance('absent', listItem, selectedClass));
@@ -428,6 +359,11 @@ function showStudentsList() {
         const resetButton =
         createButton('重設', 'reset',
             () => markAttendance('reset', listItem, selectedClass));
+        listItem.appendChild(absentButton);
+        listItem.appendChild(presentButton);
+        listItem.appendChild(leaveButton);
+        listItem.appendChild(resetButton); //jt 0928 night
+        studentsList.appendChild(listItem);
 
         const savedColor = getSavedColor
             (selectedClass, student.rollNumber);
@@ -435,12 +371,7 @@ function showStudentsList() {
             listItem.style.backgroundColor = savedColor;
         }
 
-        listItem.appendChild(absentButton);
-        listItem.appendChild(presentButton);
-        listItem.appendChild(leaveButton);
-        listItem.appendChild(resetButton); //jt 0928 night
 
-        studentsList.appendChild(listItem);
     });
 
     // Check if attendance for the 
@@ -750,23 +681,37 @@ function exportLocalStorage() {
   alert('Your localStorage data has been exported to data.json');
 }
 
-async function readJs() {
+function readJs() {
     //console.log("read a JSON file from file selection");
-    const fileInput = document.getElementById('rf');
-    console.log(fileInput);
-    fileInput.addEventListener('change', (event) => {
-        const selectedFile = event.target.files[0];
-        localStorage.setItem("students", selectedFile);
-        if (selectedFile) {
-            console.log('Selected file name:', selectedFile.name);
-            console.log('Selected file type:', selectedFile.type);
-            console.log('Selected file size:', selectedFile.size, 'bytes');
-// You can now proceed to read the file content
+    const fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener('change', handleFileSelect);
+    console.log(fileInput.value);
+    closePopup();
+}
+
+    function handleFileSelect(event) {
+        const file = event.target.files[0]; // Get the first selected file
+console.log(file);
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const fileContent = e.target.result;
+                // Process the file content here (e.g., display it, parse it)
+               console.log(fileContent);
+               //const jsArray = JSON.parse(fileContent);
+               //console.log(jsArray);
+            };
+
+
+            // Choose the appropriate method to read the file:
+            // For text files:
+            reader.readAsText(file);
+            // For binary files (as a data URL, e.g., images):
+            // reader.readAsDataURL(file);
+            // For binary files (as an ArrayBuffer):
+            // reader.readAsArrayBuffer(file);
         } else {
             console.log('No file selected.');
         }
-        console.log(selectedFile);
-    });
-
-    closePopup();
-}
+    }
