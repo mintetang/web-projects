@@ -681,23 +681,34 @@ function exportLocalStorage() {
   alert('Your localStorage data has been exported to data.json');
 }
 
-async function readJs() {
+function readJs() {
     //console.log("read a JSON file from file selection");
-    const fileInput = document.getElementById('rf');
-    console.log(fileInput);
-    fileInput.addEventListener('change', (event) => {
-        const selectedFile = event.target.files[0];
-        localStorage.setItem("students", selectedFile);
-        if (selectedFile) {
-            console.log('Selected file name:', selectedFile.name);
-            console.log('Selected file type:', selectedFile.type);
-            console.log('Selected file size:', selectedFile.size, 'bytes');
-// You can now proceed to read the file content
+    const fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener('change', handleFileSelect);
+    console.log(fileInput.value);
+    closePopup();
+}
+
+    function handleFileSelect(event) {
+        const file = event.target.files[0]; // Get the first selected file
+console.log(file);
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const fileContent = e.target.result;
+                // Process the file content here (e.g., display it, parse it)
+                console.log(fileContent);
+            };
+
+            // Choose the appropriate method to read the file:
+            // For text files:
+            reader.readAsText(file);
+            // For binary files (as a data URL, e.g., images):
+            // reader.readAsDataURL(file);
+            // For binary files (as an ArrayBuffer):
+            // reader.readAsArrayBuffer(file);
         } else {
             console.log('No file selected.');
         }
-        console.log(selectedFile);
-    });
-
-    closePopup();
-}
+    }
