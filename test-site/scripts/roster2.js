@@ -706,7 +706,7 @@ console.log(file);
 
             // Choose the appropriate method to read the file:
             // For text files:
-            //reader.readAsText(file);
+            reader.readAsText(file);
             // For binary files (as a data URL, e.g., images):
             // reader.readAsDataURL(file);
             // For binary files (as an ArrayBuffer):
