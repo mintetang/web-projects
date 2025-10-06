@@ -699,8 +699,8 @@ console.log(file);
                 const fileContent = e.target.result;
                 // Process the file content here (e.g., display it, parse it)
                console.log(fileContent);
-               const jsArray = JSON.parse(fileContent);
-               console.log(jsArray);
+               //const jsArray = JSON.parse(fileContent);
+               //console.log(jsArray);
             };
 
 
