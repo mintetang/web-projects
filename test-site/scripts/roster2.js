@@ -698,12 +698,15 @@ console.log(file);
             reader.onload = function(e) {
                 const fileContent = e.target.result;
                 // Process the file content here (e.g., display it, parse it)
-                console.log(fileContent);
+               console.log(fileContent);
+               const jsArray = JSON.parse(fileContent);
+               console.log(jsArray);
             };
+
 
             // Choose the appropriate method to read the file:
             // For text files:
-            reader.readAsText(file);
+            //reader.readAsText(file);
             // For binary files (as a data URL, e.g., images):
             // reader.readAsDataURL(file);
             // For binary files (as an ArrayBuffer):
