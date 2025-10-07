@@ -122,13 +122,14 @@ button.reset {
     margin: 0 10px;
 }
 
-button#clean {
-    background-color: #8b1a1a;
-    border:solid;
-}
 
 button#exlocal {
     background-color: #1a8b4f;
+    border:solid;
+}
+
+button#clean {
+    background-color: #8b1a1a;
     border:solid;
     display:inline-flexbox;
     float:right;
