@@ -39,27 +39,69 @@ function readOrg() {
             return;} 
     else 
     {
-		console.log(classSelector.selectedIndex-1);
-    let readClass = classSelector.
-        options[classSelector.selectedIndex-1].value;
-	
-    const readStudents = JSON.parse
-            (localStorage.getItem('students'));
+        const studentsCopy = localStorage.getItem("students");
+        //console.log(studentsCopy);
+        const stdArray = JSON.parse(studentsCopy);
+        //make the lsClass is the last class
+        const lsClass = classSelector.
+                options[classSelector.selectedIndex-1].value;
 
-    console.log(readStudents);
-    // {2025-09-08-第2堂: Array(9), 2025-09-15-第2堂: Array(10)}
+        //the newClass is the current empty class
+        const newClass = classSelector.
+                options[classSelector.selectedIndex].value;
+        //copy the lsClass to newClass
+        stdArray[newClass] = stdArray[lsClass]
 
-    jsArray = readStudents[readClass];
+        localStorage.setItem('students', 
+                JSON.stringify(stdArray));
 
-    for (let i = 0; i < jsArray.length; i++) 
-        {const newStudentName = jsArray[i].name;
-    const newStudentRoll = jsArray[i].rollNumber;
-    if (!newStudentName || !newStudentRoll) {
-        alert("Missing name or roll number.");
-        return; }
-    std(newStudentName, newStudentRoll);
-	    }
+        /* class already created so this is not necessary, leave for backup 
+        const classCopy = localStorage.getItem("classes");
+        const stdClass = JSON.parse(classCopy);
+        stdClass.push('2025-10-27-第2堂');
+        console.log(stdClass)
+        localStorage.setItem('classes', 
+                JSON.stringify(stdClass));*/
+
+        // copy the colors
+
+        const colorsCopy = localStorage.getItem("colors");
+        const stdColor = JSON.parse(colorsCopy);
+        //console.log(stdColor);
+
+        //make color of newClass to be last class
+        stdColor[newClass]=stdColor[lsClass];
+        //console.log(stdColor);
+
+        localStorage.setItem('colors', 
+                JSON.stringify(stdColor));
+        //location.reload();
+        
+        //copy attendanceData to new class
+        const copattData = localStorage.getItem('attendanceData');
+        //console.log(copattData);
+        const copyatt = JSON.parse(copattData);
+        //console.log(copyatt);
+
+
+        // filter to be copied att data from last class
+        const matchingObjects = copyatt.filter(obj => obj.class.includes(lsClass));
+        //console.log(matchingObjects);
+
+        //make newAttObjects as the new class name by map
+        const newAttObjects = matchingObjects.map(item => {       
+        return { ...item, class: newClass}; 
+        });
+
+        // By Concatenation append the new Att data to copyatt as new att
+        const newatt = copyatt.concat(newAttObjects);
+        //console.log(newatt);
+
+        localStorage.setItem('attendanceData', 
+                JSON.stringify(newatt));             
+        location.reload();		
     }
+    closePopup();
 }
 
 async function addOrg() {
