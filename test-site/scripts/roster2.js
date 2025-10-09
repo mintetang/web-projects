@@ -320,7 +320,51 @@ function showAttendanceResult(selectedClass) {
 
     // Show the attendance result section
     resultSection.style.display = 'block';
+    attText = document.getElementById('attendanceRate').innerText;
+    attClass = selectedClass;
+    console.log(attClass);
+    console.log(attText);
+    histRate(attClass, attText);
 }
+function histRate(attClass, attText) {
+    // Create a new div element
+    const newDiv = document.createElement("div");
+
+    // Add some text content to the div
+    newDiv.textContent = "歷史出席率:";
+    newDiv.classList.add("attArr");
+
+    // Add a span to the div
+    const rate1 = document.createElement("p");
+    //attObj to record the class and the attendance rate 
+    attObj = {[attClass]: attText};
+    console.log(attObj);
+    if (typeof (attArray) === 'undefined') {
+    attArray = [];
+    attArray.push(attObj);
+    console.log(attArray);
+    } 
+    else if (JSON.stringify(attArray).includes(attClass) !== false){
+        console.log(attArray.includes(attClass));
+        console.log(attObj);
+        console.log(attArray);
+    }
+    else {
+    attArray.push(attObj);
+    console.log(attArray);
+    }
+    //attArray.sort((a, b) => a.attClass - b.attClass);
+    //save attendance history to localStorage attHis
+    localStorage.setItem('attHis', 
+          JSON.stringify(attArray));
+    rate1.textContent = localStorage.getItem('attHis');
+    rate1.setAttribute ('id', 'attP');
+    newDiv.appendChild(rate1);
+    // Append the new div to the result session
+    attendanceRate.appendChild(newDiv);
+    
+}
+
 
 function closePopup() {
     // Close the currently open popup

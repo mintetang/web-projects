@@ -164,6 +164,13 @@ button#clean {
     font-weight: bold;
 }
 
+#attP {
+    padding: 0 20px;
+    color:#1a258b;
+    font-weight: bold;
+    display:inline-block;
+}
+
 #summarySection {
     border: dashed 2px rgba(21, 15, 204, 0.32);
 }
