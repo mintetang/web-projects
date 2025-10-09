@@ -353,7 +353,7 @@ function histRate(attClass, attText) {
     attArray.push(attObj);
     console.log(attArray);
     }
-    //attArray.sort((a, b) => a.attClass - b.attClass);
+    console.log(attArray.sort((a, b) => a.attClass - b.attClass));
     //save attendance history to localStorage attHis
     localStorage.setItem('attHis', 
           JSON.stringify(attArray));
@@ -362,7 +362,6 @@ function histRate(attClass, attText) {
     newDiv.appendChild(rate1);
     // Append the new div to the result session
     attendanceRate.appendChild(newDiv);
-    
 }
 
 
