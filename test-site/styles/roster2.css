@@ -165,8 +165,13 @@ button#clean {
 }
 
 #hisSection {
-    padding: 0 20px;
-    color:green;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: solid 3px;
+    color:rgb(30, 0, 128);
     font-weight: bold;
     display:block;
 }

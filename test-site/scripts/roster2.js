@@ -32,10 +32,11 @@ function showAddClassForm() {
 }
 function readOrg() {
     //console.log("read last one");
+    
 	if (!classSelector || !classSelector.options ||
-        classSelector.selectedIndex-1 === -1) {
+        classSelector.selectedIndex-1 === -1 ) {
         alert
-            ('上次會友名單不存在！');
+            ('會友名單不存在!');
             return;} 
     else 
     {
@@ -99,7 +100,8 @@ function readOrg() {
 
         localStorage.setItem('attendanceData', 
                 JSON.stringify(newatt));             
-        location.reload();		
+        location.reload();
+        showStudentsList() 		
     }
     closePopup();
 }
@@ -320,6 +322,7 @@ function showAttendanceResult(selectedClass) {
 
     // Show the attendance result section
     resultSection.style.display = 'block';
+    /*
     //set attText and attClass
     attText = document.getElementById('attendanceRate').innerText;
     if (attText === 'NaN%')
@@ -336,10 +339,40 @@ function showAttendanceResult(selectedClass) {
     document.getElementById("attP").innerText = attText;
     // Show attendance history section
     hisSection.style.display = 'block';
-    histRate(attClass, attText);
+    histRate(attClass, attText);*/
 }
-function histRate(attClass, attText) {
-    // Add a span to the div
+function histRate() {
+    const classSelector = document.
+        getElementById('classSelector');
+
+    if (!classSelector || !classSelector.options ||
+        classSelector.selectedIndex === -1) {
+        console.error
+            ('Class selector is not properly defined or has no options.');
+        return;
+    }
+    const selectedClass = classSelector.
+        options[classSelector.selectedIndex].value;
+
+    if (!selectedClass) {
+        console.error('Selected class is not valid.');
+        return;
+    }
+    //set attText and attClass
+    attText = document.getElementById('attendanceRate').innerText;
+    if (attText === 'NaN%')
+        {console.log('need to have attendance data to output');
+            return;
+        };
+    attClass = selectedClass;
+    //console.log(attClass);
+    //console.log(attText);  
+    //make attendance history session here
+    const hisSection = document.
+        getElementById('hisSection');
+    //document.getElementById("hisSection").innerText="TBD";
+    document.getElementById("attP").innerText = `${attClass}:${attText}`;
+    // Add content from localStorage attHis
     let rate1 =  localStorage.getItem('attHis');
     //console.log(rate1);
     if (rate1 === null){
@@ -746,6 +779,16 @@ function cleanSelectedClass()
     //console.log(localClass);
     localStorage.setItem
             ('classes', JSON.stringify(localClass));
+
+    // delete selectedClass attendance rate history
+    const newatt = JSON.parse
+            (localStorage.getItem('attHis'));
+    indexToDel = newatt.findIndex((obj) => selectedClass in obj );
+    newatt.splice(indexToDel, 1);
+    localStorage.setItem('attHis', 
+          JSON.stringify(newatt));
+
+    //refresh
     document.location.reload();
 	//localStorage.clear();
     } else {

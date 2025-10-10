@@ -90,6 +90,9 @@
             <button onclick="submitAttendance()">
                 4 確認送出統計
             </button>
+            <button onclick="histRate()">
+                5 歷史出席率Update
+            </button>
 
             <!-- Result Section <div id="resultSection" style="display: none;">-->            
             <div id="resultSection">
@@ -126,7 +129,10 @@
                     出席率: 
                     <span id="attendanceRate"></span>
                 </p>
-            </div>
+        </div>
+    </div>
+
+    </div>
             <!-- Historical Section -->            
             <div id="hisSection">
                 <h3>歷史出席率</h3>
@@ -135,8 +141,6 @@
                     <!--紀錄日期堂次:  -->
                     <span id="attP"></span>
                 </p>
-            </div>
-        </div>
     </div>
 
     <div id="addStudentOrgPopup" class="popup">
@@ -163,7 +167,7 @@
         <h2>使用上次會友名單</h2>
         <!-- Add all org memebers from json -->
         <label for="rl">
-            使用上次會友名單?
+            請注意！！！名單空白才能使用上次會友名單。
         </label>
         <input type="file" hidden id="rl">
 
