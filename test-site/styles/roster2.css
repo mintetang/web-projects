@@ -153,35 +153,48 @@ button#clean {
     margin-top: 10px;
 }
 
-#resultSection p {
-    margin: 5px;
-    display: inline-block
-}
 
-#resultSection span {
+#resultSection {
     margin-right: 2em;
     color:#8b1a1a;
     font-weight: bold;
 }
 
-#attendanceDate ｛
-margin-right: 5px;
+#resultSection p {
+    margin: 5px;
+    color:#221a8b;
+    display: inline-block
+}
+
+#resultSection span {
+    color:#d54a13;
+    display: inline-block
+}
+
+#attendanceDate {
+    margin: 0px;
+    display:inline;
+}
+
+#attendanceTime {
+    margin: 0px;
+    display:inline;
 }
 
 #hisSection {
     max-width: 800px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 0 20px 0 20px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: solid 3px;
+    border: dashed 3px;
     color:rgb(30, 0, 128);
     font-weight: bold;
     display:block;
 }
 
 #attP {
-    padding: 0 20px;
+    padding: 0px;
     color:#1a258b;
     font-weight: bold;
     display:block;
