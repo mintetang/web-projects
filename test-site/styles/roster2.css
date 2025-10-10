@@ -164,6 +164,10 @@ button#clean {
     font-weight: bold;
 }
 
+#attendanceDate ｛
+margin-right: 5px;
+}
+
 #hisSection {
     max-width: 800px;
     margin: 20px auto;
@@ -195,4 +199,5 @@ button#clean {
 #summarySection span {
     color:#8b1a1a;
     font-weight: bold;
+
 }
