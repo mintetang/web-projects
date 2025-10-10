@@ -164,11 +164,18 @@ button#clean {
     font-weight: bold;
 }
 
+#hisSection {
+    padding: 0 20px;
+    color:green;
+    font-weight: bold;
+    display:block;
+}
+
 #attP {
     padding: 0 20px;
     color:#1a258b;
     font-weight: bold;
-    display:inline-block;
+    display:block;
 }
 
 #summarySection {

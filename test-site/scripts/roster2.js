@@ -31,7 +31,7 @@ function showAddClassForm() {
         style.display = 'block';
 }
 function readOrg() {
-    console.log("read last one");
+    //console.log("read last one");
 	if (!classSelector || !classSelector.options ||
         classSelector.selectedIndex-1 === -1) {
         alert
@@ -320,48 +320,63 @@ function showAttendanceResult(selectedClass) {
 
     // Show the attendance result section
     resultSection.style.display = 'block';
+    //set attText and attClass
     attText = document.getElementById('attendanceRate').innerText;
+    if (attText === 'NaN%')
+        {console.log('need to have attendance data to output');
+            return;
+        };
     attClass = selectedClass;
-    console.log(attClass);
-    console.log(attText);
+    //console.log(attClass);
+    //console.log(attText);  
+    //make attendance history session here
+    const hisSection = document.
+        getElementById('hisSection');
+    //document.getElementById("hisSection").innerText="TBD";
+    document.getElementById("attP").innerText = attText;
+    // Show attendance history section
+    hisSection.style.display = 'block';
     histRate(attClass, attText);
 }
 function histRate(attClass, attText) {
-    // Create a new div element
-    const newDiv = document.createElement("div");
-
-    // Add some text content to the div
-    newDiv.textContent = "歷史出席率:";
-    newDiv.classList.add("attArr");
-
     // Add a span to the div
-    const rate1 = document.createElement("p");
+    let rate1 =  localStorage.getItem('attHis');
+    //console.log(rate1);
+    if (rate1 === null){
+        console.log('no data in attHis');
+        }
+        else {
+        document.getElementById("attP").innerText = rate1;
+        }
     //attObj to record the class and the attendance rate 
     attObj = {[attClass]: attText};
-    console.log(attObj);
-    if (typeof (attArray) === 'undefined') {
+    //console.log(attObj);
+    let attArray = JSON.parse(localStorage.getItem('attHis'));
+    //console.log(attArray);
+    if (attArray === null) {
     attArray = [];
     attArray.push(attObj);
-    console.log(attArray);
+    //console.log(attArray);
     } 
     else if (JSON.stringify(attArray).includes(attClass) !== false){
-        console.log(attArray.includes(attClass));
-        console.log(attObj);
-        console.log(attArray);
+        // Find object with the attClass;
+        indexToUpdate = attArray.findIndex((obj) => attClass in obj );
+        console.log(indexToUpdate);
+        attArray.splice(indexToUpdate, 1, attObj); 
+        // Remove 1 element at indexToUpdate and insert newObject
+        //console.log(attArray);
     }
     else {
     attArray.push(attObj);
-    console.log(attArray);
+    //console.log(attArray);
     }
     console.log(attArray.sort((a, b) => a.attClass - b.attClass));
     //save attendance history to localStorage attHis
     localStorage.setItem('attHis', 
           JSON.stringify(attArray));
-    rate1.textContent = localStorage.getItem('attHis');
-    rate1.setAttribute ('id', 'attP');
-    newDiv.appendChild(rate1);
+    document.getElementById("attP").innerText = localStorage.getItem('attHis');
+    //rate1.innerText = localStorage.getItem('attHis');
     // Append the new div to the result session
-    attendanceRate.appendChild(newDiv);
 }
 
 
@@ -704,7 +719,7 @@ function getSavedColor(selectedClass, rollNumber) {
 function cleanSelectedClass()
     {
     const reCheck = prompt('！！！請輸入"CONFIRM"來確認刪除目前的日期出席記錄，確認後"無法回復"！！！');
-    console.log(reCheck); 
+    //console.log(reCheck); 
     if (reCheck === 'CONFIRM') {
   // Perform actions for cancellation, e.g., stop further processing
 
