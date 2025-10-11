@@ -368,21 +368,19 @@ function histRate() {
     //console.log(attClass);
     //console.log(attText);  
     //make attendance history session here
-    const hisSection = document.
-        getElementById('hisSection');
+    //const hisSection = document.getElementById('hisSection');
     //document.getElementById("hisSection").innerText="TBD";
-    document.getElementById("attP").innerText = `${attClass}:${attText}`;
     // Add content from localStorage attHis
-    let rate1 =  localStorage.getItem('attHis');
-    //console.log(rate1);
-    if (rate1 === null){
+
+    if (localStorage.getItem('attHis') === null){
         console.log('no data in attHis');
         }
         else {
-        document.getElementById("attP").innerText = rate1;
+        document.getElementById("attP").innerText = 
+        localStorage.getItem('attHis');
         }
     //attObj to record the class and the attendance rate 
-    attObj = {[attClass]: attText};
+    attObj = {'date': attClass,'per': attText};
     //console.log(attObj);
     let attArray = JSON.parse(localStorage.getItem('attHis'));
     //console.log(attArray);
@@ -393,8 +391,9 @@ function histRate() {
     } 
     else if (JSON.stringify(attArray).includes(attClass) !== false){
         // Find object with the attClass;
-        indexToUpdate = attArray.findIndex((obj) => attClass in obj );
-        console.log(indexToUpdate);
+        //indexToUpdate = attArray.findIndex((obj) => attClass in obj );
+        indexToUpdate = attArray.findIndex(obj => obj.date === attObj.date);
+        //console.log(indexToUpdate);
         attArray.splice(indexToUpdate, 1, attObj); 
         // Remove 1 element at indexToUpdate and insert newObject
         //console.log(attArray);
@@ -403,15 +402,15 @@ function histRate() {
     attArray.push(attObj);
     //console.log(attArray);
     }
-    console.log(attArray.sort((a, b) => a.attClass - b.attClass));
+    attArray.sort((a, b) => 
+        a.date.localeCompare(b.date));
     //save attendance history to localStorage attHis
     localStorage.setItem('attHis', 
           JSON.stringify(attArray));
-    document.getElementById("attP").innerText = localStorage.getItem('attHis');
-    //rate1.innerText = localStorage.getItem('attHis');
+    document.getElementById("attP").innerText = 
+    localStorage.getItem('attHis');
     // Append the new div to the result session
 }
-
 
 function closePopup() {
     // Close the currently open popup
