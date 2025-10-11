@@ -376,8 +376,8 @@ function histRate() {
         console.log('no data in attHis');
         }
         else {
-        document.getElementById("attP").innerText = 
-        localStorage.getItem('attHis');
+        //document.getElementById("attP").innerText = localStorage.getItem('attHis');
+        console.log(localStorage.getItem('attHis'));
         }
     //attObj to record the class and the attendance rate 
     attObj = {'date': attClass,'per': attText};
@@ -407,8 +407,65 @@ function histRate() {
     //save attendance history to localStorage attHis
     localStorage.setItem('attHis', 
           JSON.stringify(attArray));
-    document.getElementById("attP").innerText = 
-    localStorage.getItem('attHis');
+    //document.getElementById("attP").innerText = localStorage.getItem('attHis');
+
+    //myChart
+
+    const arrayOfObjects = attArray;
+    const { date, per } = arrayOfObjects.reduce((acc, obj) => {
+    acc.date.push(obj.date);
+    acc.per.push(obj.per);
+    return acc;
+    }, { date: [], per: [] });
+
+    //const stringArray = ["10", "21", "3", "14", "53"];
+    const perInt = per.map(function(str) {
+    return parseInt(str, 10); // 10 specifies decimal radix
+    });
+    
+    console.log(per);
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+        if(Chart.getChart("myChart")) {
+    Chart.getChart("myChart")?.destroy()
+        }                                                                           
+    mychart = new Chart(ctx, {
+        type: 'bar', // or 'line', 'pie', etc.
+        data: {
+            labels: date, // Array for labels on the x-axis
+            datasets: [{
+                label: '歷史出席率',
+                data: perInt, // Your array of data points
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    title: {
+                    display: true,
+                    text: '出席率 (%)'}, // Your Y-axis label
+                    beginAtZero: true
+                }
+            }
+        }
+    });
     // Append the new div to the result session
 }
 

@@ -9,6 +9,7 @@
     <title>Attendance Portal</title>
     <link rel="stylesheet" href="styles/roster2.css">
     <style></style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -132,7 +133,6 @@
         </div>
     </div>
 
-    </div>
             <!-- Historical Section -->            
             <div id="hisSection">
                 <h3>歷史出席率</h3>
@@ -141,7 +141,8 @@
                     <!--紀錄日期堂次:  -->
                     <span id="attP"></span>
                 </p>
-    </div>
+                <canvas id="myChart"></canvas>
+            </div>
 
     <div id="addStudentOrgPopup" class="popup">
         <h2>初始會友名單</h2>
