@@ -100,7 +100,7 @@ function readOrg() {
 
         localStorage.setItem('attendanceData', 
                 JSON.stringify(newatt));             
-        location.reload();
+        //location.reload();
         showStudentsList() 		
     }
     closePopup();
@@ -907,3 +907,31 @@ function rlsFromFile(event) {
 
 // HTML for file input:
 // <input type="file" id="restoreFileInput" accept=".json" onchange="rlsFromFile(event)">
+
+//make button dimmed after clicked
+
+document.getElementById('addClassButton').addEventListener('click', function() {
+  this.classList.add('dimmed');
+});
+
+document.getElementById('readOrgButton').addEventListener('click', function() {
+  this.classList.add('dimmed');
+});
+
+document.getElementById('addStudentOrgButton').addEventListener('click', function() {
+  this.classList.add('dimmed');
+});
+
+/* add students should be multiple actions
+document.getElementById('addStudentButton').addEventListener('click', function() {
+  this.classList.add('dimmed');
+});
+*/
+
+document.getElementById('submitAtt1').addEventListener('click', function() {
+  this.classList.add('dimmed');
+});
+
+document.getElementById('submitAtt2').addEventListener('click', function() {
+  this.classList.add('dimmed');
+});

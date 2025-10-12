@@ -214,3 +214,16 @@ button#clean {
     font-weight: bold;
 
 }
+
+button.refresh {
+    background-color:rgb(255, 221, 0);
+    border:solid;
+    color:#333
+}
+
+button.dimmed {
+  background-color: darkgray; /* Dimmed background color */
+  color: #ccc; /* Lighter text color for dimmed state */
+  cursor: default; /* Change cursor to indicate it's no longer fully active */
+  pointer-events: none; /* Optional: prevent further clicks on the dimmed button */
+}

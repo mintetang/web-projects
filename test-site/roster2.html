@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="styles/roster2.css">
     <style></style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script type="module" crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 </head>
 
 <body>
@@ -49,12 +51,16 @@
                 onclick="showAddStudentForm()">
                 3 加入新會友
             </button>
-            <button onclick="submitAttendance()">
+            <button id="submitAtt1" onclick="submitAttendance()">
                 4 確認送出統計
             </button>
 			<button onclick="histRate()">
                 5 更新歷史出席率
             </button>
+            <button class = 'refresh' onclick="location.reload()">
+                0 刷新Redo
+            </button>
+            
             <label for="classSelector">日期和堂次記錄:</label>
             <select id="classSelector" required 
                 onchange="showStudentsList()">
@@ -91,7 +97,7 @@
                 </p>
             </div>
 
-            <button onclick="submitAttendance()">
+            <button id="submitAtt2" onclick="submitAttendance()">
                 4 確認送出統計
             </button>
             <button onclick="histRate()">
@@ -168,7 +174,8 @@
         <h2>使用上次會友名單</h2>
         <!-- Add all org memebers from json -->
         <label for="rl">
-            請注意！！！名單空白才能使用上次會友名單。
+            請注意！！！ <br>
+            名單空白才能使用上次會友名單。
         </label>
         <input type="file" hidden id="rl">
 
