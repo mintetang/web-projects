@@ -109,16 +109,15 @@ strong {
     white-space: nowrap;
 }
 
-button {
-    padding: 8px;
+button {
     cursor: pointer;
     border: none;
     border-radius: 20px;
     background-color: #3498db;
     color: #fff;
-    padding: 10px;
+    padding: 15px;
     cursor: pointer;
-    margin: 5px 5px;
+    margin: 10px 10px;
 }
 
 button:hover {
