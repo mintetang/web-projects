@@ -932,6 +932,25 @@ document.getElementById('submitAtt1').addEventListener('click', function() {
   this.classList.add('dimmed');
 });
 
-document.getElementById('submitAtt2').addEventListener('click', function() {
+/*document.getElementById('submitAtt2').addEventListener('click', function() {
   this.classList.add('dimmed');
-});
+});*/
+
+function searchRoll() {
+    const rolltarget = document.getElementById("rollno").value;
+    console.log(rolltarget);
+    // Define your attribute name and value as variables
+    const attributeName = "data-roll-number";
+    let attributeValue = String(rolltarget-10);
+    if (Number(rolltarget) <= 10){
+     attributeValue = 5;
+    }
+    // Construct the CSS selector string using template literals
+    const selector = `[${attributeName}="${attributeValue}"]`;
+    // Find the first element matching the selector
+    const targetRoll = document.querySelector(selector);
+    console.log(targetRoll);
+    if (targetRoll) {
+            targetRoll.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }

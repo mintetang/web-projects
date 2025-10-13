@@ -67,7 +67,7 @@ label {
     display: block;
 }
 label[for="classSelector"]{display:inline-block; margin-left: 10px}
-/*label[for="sessionSelector"]{display:inline;margin-left: 10px}*/
+label[for="rollno"]{display:inline-block;margin-left: 10px}
 
 select {
     padding: 8px;
@@ -109,7 +109,8 @@ strong {
     white-space: nowrap;
 }
 
-button {
+button {
+
     cursor: pointer;
     border: none;
     border-radius: 20px;
