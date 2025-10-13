@@ -22,6 +22,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position:relative;
 }
 
 .navbar-brand {
@@ -29,6 +30,7 @@ body {
 }
 
 .navbar-links {
+    padding-left: 5px;
     display: flex;
 }
 
@@ -46,6 +48,16 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+#formTitle {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    margin: 1em 0;
+
+}
 h2 {
     color: #333;
 }
@@ -54,7 +66,7 @@ label {
     margin-top: 10px;
     display: block;
 }
-label[for="classSelector"]{display:block; margin-left: 10px}
+label[for="classSelector"]{display:inline-block; margin-left: 10px}
 /*label[for="sessionSelector"]{display:inline;margin-left: 10px}*/
 
 select {
@@ -106,7 +118,7 @@ button {
     color: #fff;
     padding: 10px;
     cursor: pointer;
-    margin: 10px 10px;
+    margin: 5px 5px;
 }
 
 button:hover {
