@@ -41,7 +41,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
     background-color: white;
@@ -66,8 +66,11 @@ label {
     margin-top: 10px;
     display: block;
 }
-label[for="classSelector"]{display:inline-block; margin-left: 10px}
-label[for="rollno"]{display:inline-block;margin-left: 10px}
+
+label[for="classSelector"]{display:block}
+label[for="rollno"]{display:inline-block;
+    margin-left: 120px;
+    }
 
 select {
     padding: 8px;

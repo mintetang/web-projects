@@ -61,16 +61,16 @@
             <button class = 'refresh' onclick="location.reload()">
                 0 刷新Redo
             </button>
-
-            <label for="rollno">以編號搜尋 
-                <br>-請輸入號碼:（例如15,40,345..）</label>
-            <input type="text" id="rollno" required
-                onchange="searchRoll()">
              
             <label for="classSelector">日期和堂次記錄:</label>
             <select id="classSelector" required 
                 onchange="showStudentsList()">
             </select>
+            
+            <label for="rollno">搜尋編號: </label>
+            <input type="text" id="rollno" required
+                size="10" onchange="searchRoll()">
+
             </div>
             <!--<label for="sessionSelector">選擇第幾堂:</label>
             <select id="sessionSelector" required
