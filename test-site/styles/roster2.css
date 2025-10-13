@@ -116,12 +116,13 @@ button {
 
     cursor: pointer;
     border: none;
-    border-radius: 20px;
+    border-radius: 15px;
     background-color: #3498db;
     color: #fff;
     padding: 15px;
     cursor: pointer;
     margin: 10px 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
@@ -231,9 +232,9 @@ button#clean {
 }
 
 button.refresh {
-    background-color:rgb(255, 221, 0);
-    border:solid;
-    color:#333
+    border:solid #3498db ;
+    color:maroon;
+    background-color:rgb(80, 255, 179);
 }
 
 button.dimmed {
