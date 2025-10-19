@@ -853,31 +853,46 @@ function cleanSelectedClass()
 
 }
 
+function getFormattedDateTime() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+      const day = String(now.getDate()).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      //const seconds = String(now.getSeconds()).padStart(2, '0');
+
+      // Example format: YYYY-MM-DD_HH-MM-SS
+      return `${year}-${month}-${day}-${hours}-${minutes}`;
+    }
 
 function exportLocalStorage() {
   // 1. Get all localStorage data
-  const localStorageData = {};
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    localStorageData[key] = localStorage.getItem(key);
-  }
+    const localStorageData = {};
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        localStorageData[key] = localStorage.getItem(key);
+    }
 
-  // 2. Convert to a JSON string
-  const jsonString = JSON.stringify(localStorageData, null, 4);
+    // 2. Convert to a JSON string
+    const jsonString = JSON.stringify(localStorageData, null, 4);
 
-  // 3. Create a Blob and URL
-  const blob = new Blob([jsonString], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
+    // 3. Create a Blob and URL
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
 
-  // 4. Create and click a download link
-  const downloadLink = document.createElement('a');
-  downloadLink.href = url;
-  downloadLink.download = 'data.json';
-  document.body.appendChild(downloadLink);
-  downloadLink.click();
-  document.body.removeChild(downloadLink);
+    // 4. Create and click a download link
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    const dateTimeString = getFormattedDateTime();
+    console.log(dateTimeString);
+    const filename = `data_${dateTimeString}.json`;
+    downloadLink.download = filename;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
   
-  //alert('Your localStorage data has been exported to data.json');
+  alert(`Your localStorage data has been exported to ${filename}`);
 }
 
 function rlsFromFile(event) {
