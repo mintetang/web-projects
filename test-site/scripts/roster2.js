@@ -979,7 +979,8 @@ function highlightSearchTerm(searchTerm, targetElementId) {
         // Remove previous highlights to avoid nesting
         let cleanedText = originalText.replace(/<\/?mark>/g, ''); 
         
-        const highlightedText = cleanedText.replace(regex, '<mark class="highlight">$1</mark>');
+        const highlightedText = cleanedText.replace(regex, `<mark class='highlight'>$1</mark>`);
+        //console.log(highlightedText);
         targetElement.innerHTML = highlightedText;
 
         // Apply CSS for highlighting
