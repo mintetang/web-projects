@@ -108,7 +108,7 @@ function readOrg() {
 
 async function addOrg() {
     const requestURL =
-        "https://mintetang.github.io/web-projects/test-site/scripts/nameroll1.json";
+        "https://roster.wasmer.app/scripts/nameroll1.json";
     const request = new Request(requestURL);
     const response = await fetch(request);
     const rData = await response.json();
@@ -156,9 +156,9 @@ function std(a, b) {
     const listItem = document.createElement('li');
     listItem.setAttribute('data-roll-number', newStudentRoll);
     listItem.innerHTML =
-        `
+        `<strong>
             ${newStudentName}
-        
+        </strong>
         ${newStudentRoll}`;
 
     const absentButton =
@@ -534,9 +534,9 @@ function showStudentsList() {
         listItem.setAttribute
             ('data-roll-number', student.rollNumber);
         listItem.innerHTML = 
-            `
+            `<strong>
                 ${student.name}
-            
+            </strong>
             ${student.rollNumber}`;
 
         const absentButton = createButton('缺席', 'absent', 
