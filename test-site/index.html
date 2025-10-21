@@ -67,17 +67,13 @@
                 onchange="showStudentsList()">
             </select>
             
-            <label for="rollno">搜尋編號: </label>
+            <!--<label for="rollno">搜尋編號: </label>
             <input type="text" id="rollno" required
-                size="10" onchange="searchRoll()">
+                size="10" onchange="searchRoll()"> -->
+            <input type="text" id="searchTermInput" placeholder="輸入會友名稱">
+            <button onclick="searchAndHighlight()">Search</button>
 
-            </div>
-            <!--<label for="sessionSelector">選擇第幾堂:</label>
-            <select id="sessionSelector" required
-                onchange="showStudentsList()">
-				<option value="first">第1堂</option>
-				<option value="second" selected>第2堂</option>				
-            </select> -->
+        </div>
 
             <ul id="studentsList">
                 <!-- Populate students dynamically 

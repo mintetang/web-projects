@@ -156,10 +156,10 @@ function std(a, b) {
     const listItem = document.createElement('li');
     listItem.setAttribute('data-roll-number', newStudentRoll);
     listItem.innerHTML =
-        `<strong>
+        `
             ${newStudentName}
-        </strong> 
-        (#${newStudentRoll})`;
+        
+        ${newStudentRoll}`;
 
     const absentButton =
         createButton('缺席', 'absent',
@@ -534,10 +534,10 @@ function showStudentsList() {
         listItem.setAttribute
             ('data-roll-number', student.rollNumber);
         listItem.innerHTML = 
-            `<strong>
+            `
                 ${student.name}
-            </strong> 
-            (#${student.rollNumber})`;
+            
+            ${student.rollNumber}`;
 
         const absentButton = createButton('缺席', 'absent', 
             () => markAttendance('absent', listItem, selectedClass));
@@ -951,7 +951,7 @@ document.getElementById('submitAtt1').addEventListener('click', function() {
   this.classList.add('dimmed');
 });*/
 
-function searchRoll() {
+/*function searchRoll() {
     const rolltarget = document.getElementById("rollno").value;
     console.log(rolltarget);
     // Define your attribute name and value as variables
@@ -968,4 +968,42 @@ function searchRoll() {
     if (targetRoll) {
             targetRoll.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+    } */
+
+function highlightSearchTerm(searchTerm, targetElementId) {
+        const targetElement = document.getElementById(targetElementId);
+        if (!targetElement) return;
+
+        const originalText = targetElement.innerHTML;
+        const regex = new RegExp(`(${searchTerm})`, 'ig'); // 'ig' for case-insensitive and global search
+        // Remove previous highlights to avoid nesting
+        let cleanedText = originalText.replace(/<\/?mark>/g, ''); 
+        
+        const highlightedText = cleanedText.replace(regex, '<mark class="highlight">$1</mark>');
+        targetElement.innerHTML = highlightedText;
+
+        // Apply CSS for highlighting
+        //const style = document.createElement('style');
+        //style.innerHTML = `.highlight { background-color: yellow; }`;
+        //document.head.appendChild(style);
     }
+
+function scrollToHighlightedTerm() {
+        const firstHighlight = document.querySelector('.highlight');
+        if (firstHighlight) {
+            firstHighlight.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+async function searchAndHighlight() {
+            const searchTerm = document.getElementById("searchTermInput").value;
+            highlightSearchTerm(searchTerm, 'studentsList');
+            scrollToHighlightedTerm();
+            await sleep(2000);
+            location.reload();
+    }
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+

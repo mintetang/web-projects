@@ -4,6 +4,10 @@ body {
     padding: 0;
     background-color: #f4f4f4;
 }
+.highlight {
+    background-color: yellow;
+        }
+
 .popup {
     display: none;
     position: fixed;
@@ -72,9 +76,9 @@ label[for="rollno"]{display:inline-block;
     margin-left: 120px;
     }
 
-select {
+select, #searchTermInput {
     padding: 8px;
-    margin: 5px 0;
+    margin: 5px 10px;
     border: 1px solid #ccc;
 }
 ul {
