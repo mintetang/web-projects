@@ -156,9 +156,9 @@ function std(a, b) {
     const listItem = document.createElement('li');
     listItem.setAttribute('data-roll-number', newStudentRoll);
     listItem.innerHTML =
-        `
+        `<strong>
             ${newStudentName}
-        
+        </strong>
         ${newStudentRoll}`;
 
     const absentButton =
@@ -534,9 +534,9 @@ function showStudentsList() {
         listItem.setAttribute
             ('data-roll-number', student.rollNumber);
         listItem.innerHTML = 
-            `
-                ${student.name}
-            
+            `<strong>
+                ${newStudentName}
+            </strong>
             ${student.rollNumber}`;
 
         const absentButton = createButton('缺席', 'absent', 
