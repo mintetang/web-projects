@@ -1173,7 +1173,7 @@ async function overwriteFile() {
   // 3. Create a Blob and URL
   const newContentBlob = new Blob([jsonString], { type: "application/json" });
   console.log(newContentBlob);
-  fileId = '1IsVB4U9Ne3xsA46eqK9d-30ESWeowVhP';
+  fileId = document.getElementById("pfileId").innerText;
    const url = 'https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=media';
     fetch(url, {
         method: 'PATCH',
