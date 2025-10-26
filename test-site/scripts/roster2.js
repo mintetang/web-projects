@@ -1087,7 +1087,7 @@ async function uploadToDrive() {
   const fileContent = JSON.stringify(allData, null, 2);
   const file = new Blob([fileContent], { type: "application/json" });
   const metadata = {
-    name: "memo.json",
+    name: "roster.json",
     mimeType: "application/json",
   };
 
