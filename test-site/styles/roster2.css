@@ -247,3 +247,45 @@ button.dimmed {
   cursor: default; /* Change cursor to indicate it's no longer fully active */
   pointer-events: none; /* Optional: prevent further clicks on the dimmed button */
 }
+
+button#update_button {
+    background-color: #1a8b85;
+    border:solid;
+    display:inline-flexbox;
+}
+
+button#upload_button {
+    background-color: #1a8b85;
+    border:solid;
+    display:inline-flexbox;
+}
+
+button#googleIn {
+    background-color: #1a8b85;
+    border:solid;
+    display:inline-flexbox;
+}
+
+button.blink {
+animation: blink-animation 1s 5 alternate; /* 1s duration, 5 seconds, alternates between keyframes */
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2; /* Button becomes semi-transparent */
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+label#googleNote {
+    font-weight: bold;
+}
+label#googleNote span {
+    background-color: gold;
+    font-size: 1.5em;
+}

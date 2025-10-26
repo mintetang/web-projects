@@ -1008,3 +1008,185 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// for Google Output to drive
+
+const CLIENT_ID =
+  "273160542369-ttt03gmv0iio70vek53dqrqcfs9rt1a6.apps.googleusercontent.com";
+const API_KEY = "AIzaSyDZkfoh01VUEwX_uK3xn3jVvMLssdPCqoo";
+const SCOPES = "https://www.googleapis.com/auth/drive.file";
+const DISCOVERY_DOC =
+  "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest";
+
+let tokenClient;
+let gapiInited = false;
+let gisInited = false;
+
+document.getElementById("authorize_button").onclick = handleAuthClick;
+//document.getElementById("upload_button").onclick = uploadToDrive;
+
+// Load GAPI client
+gapi.load("client", async () => {
+  await gapi.client.init({ apiKey: API_KEY, discoveryDocs: [DISCOVERY_DOC] });
+  gapiInited = true;
+  maybeEnableButtons();
+});
+
+// Initialize Google Identity Services
+window.onload = () => {
+  tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: CLIENT_ID,
+    scope: SCOPES,
+    callback: "", // Set later
+  });
+  gisInited = true;
+  maybeEnableButtons();
+};
+
+//make button dimmed or blink after clicked
+document
+  .getElementById("authorize_button")
+  .addEventListener("click", function () {
+    this.classList.add("dimmed");
+  });
+/*document.getElementById("upload_button").addEventListener("click", function () {
+  this.classList.add("blink");
+});*/
+
+document.getElementById("googleIn").addEventListener("click", function () {
+  this.classList.add("blink");
+});
+
+document.getElementById("update_button").addEventListener("click", function () {
+  this.classList.add("blink");
+});
+
+function maybeEnableButtons() {
+  if (gapiInited && gisInited) {
+    document.getElementById("authorize_button").disabled = false;
+  }
+}
+
+function handleAuthClick() {
+  tokenClient.callback = async (resp) => {
+    if (resp.error) throw resp;
+    document.getElementById("upload_button").disabled = false;
+  };
+  tokenClient.requestAccessToken({ prompt: "consent" });
+}
+
+//declaire fileId to set in upload and use in googleIn
+
+async function uploadToDrive() {
+  // Example: get all localStorage data
+  const allData = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    allData[key] = localStorage.getItem(key);
+  }
+
+  const fileContent = JSON.stringify(allData, null, 2);
+  const file = new Blob([fileContent], { type: "application/json" });
+  const metadata = {
+    name: "memo.json",
+    mimeType: "application/json",
+  };
+
+  const accessToken = gapi.client.getToken().access_token;
+  const form = new FormData();
+  form.append(
+    "metadata",
+    new Blob([JSON.stringify(metadata)], { type: "application/json" })
+  );
+  form.append("file", file);
+
+  const res = await fetch(
+    "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id",
+    {
+      method: "POST",
+      headers: new Headers({ Authorization: "Bearer " + accessToken }),
+      body: form,
+    }
+  );
+
+  const json = await res.json();
+  document.getElementById("pfileId").innerText = json.id;
+  alert("✅ 已完成上傳: File ID: " + json.id);
+  return;
+}
+
+
+async function googleIn() {
+  accessToken = gapi.client.getToken().access_token;
+  console.log(accessToken);
+  //  const fileUrl =
+
+  if (typeof fileId !== "undefined"){
+    console.log(fileId);}
+    else {
+  fileId = document.getElementById("pfileId").innerText;}
+  
+  const fetchUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
+  const fetchOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  try {
+    const response = await fetch(fetchUrl, fetchOptions);
+    if (!response.ok) {
+      throw new Error(`Error fetching file: ${response.statusText}`);
+    }
+    const fileContent = await response.json(); // or .blob(), .json(), etc., depending on file type
+    console.log("File Content:", fileContent);
+    localStorage.clear(); // Clear existing localStorage before restoring
+    for (const key in fileContent) {
+      localStorage.setItem(key, fileContent[key]);
+    }
+    console.log("localStorage restored successfully!");
+    alert("成功讀回紀錄!");
+    location.reload();
+    //return fileContent;
+  } catch (error) {
+    console.error("Failed to read file:", error);
+    return null;
+  }
+}
+
+// Assuming you have authenticated and obtained an access token
+// and the gapi client library is loaded.
+
+async function overwriteFile() {
+  accessToken = gapi.client.getToken().access_token;
+  console.log(accessToken);
+  // 1. Get all localStorage data
+  const localStorageData = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    localStorageData[key] = localStorage.getItem(key);
+  }
+
+  // 2. Convert to a JSON string
+  const jsonString = JSON.stringify(localStorageData, null, 4);
+
+  // 3. Create a Blob and URL
+  const newContentBlob = new Blob([jsonString], { type: "application/json" });
+  console.log(newContentBlob);
+  fileId = '1IsVB4U9Ne3xsA46eqK9d-30ESWeowVhP';
+   const url = 'https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=media';
+    fetch(url, {
+        method: 'PATCH',
+        headers: new Headers({
+            Authorization: `Bearer ${accessToken}`,
+            'Content-type': "application/json"
+        }),
+        body: jsonString
+        })
+        .then(result => result.json())
+        .then(value => {
+            console.log('Updated. Result:\n' + JSON.stringify(value, null, 2));
+            alert('成功更新Google roster.json');
+        })
+        .catch(err => console.error(err))
+      }

@@ -253,15 +253,25 @@
     <div>
         <button id="exlocal" 
         onclick="exportLocalStorage()">
-        儲存和輸出出席紀錄 
+        儲存出席紀錄 
         </button>
         <button id="inlocal"
         onclick="showreadForm()">
         讀回出席紀錄
         </button>
+        <label id="googleNote">
+            讀回或儲存Google: 請先<span>"登入認證"</span><br>
+            之後==>“讀回Google”或“儲存Google”
+          </label>
+          <button id="authorize_button">登入認證</button>
+          ==>
+          <button id="googleIn" onclick="googleIn()">讀回Google</button>
+          OR
+          <button id="update_button" onclick="overwriteFile()">儲存Google</button>
         <button id="clean" 
         onclick="cleanSelectedClass()">刪除出席記錄 
-        </button>
+        </button><p id="pfileId">1IsVB4U9Ne3xsA46eqK9d-30ESWeowVhP</p>
+        
     </div>
     <script src="scripts/roster2.js"></script>
 </body>
