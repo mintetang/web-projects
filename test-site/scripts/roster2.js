@@ -108,7 +108,7 @@ function readOrg() {
 
 async function addOrg() {
     const requestURL =
-        "https://roster.wasmer.app/scripts/nameroll1.json";
+        "https://github.com/mintetang/web-projects/blob/main/test-site/scripts/nameroll1.json";
     const request = new Request(requestURL);
     const response = await fetch(request);
     const rData = await response.json();
@@ -1189,4 +1189,5 @@ async function overwriteFile() {
             alert('成功更新Google roster.json');
         })
         .catch(err => console.error(err))
+
       }
