@@ -923,7 +923,7 @@ function rlsFromFile(event) {
 // HTML for file input:
 // <input type="file" id="restoreFileInput" accept=".json" onchange="rlsFromFile(event)">
 
-//make button dimmed after clicked
+/* make button dimmed after clicked
 
 document.getElementById('addClassButton').addEventListener('click', function() {
   this.classList.add('dimmed');
@@ -943,9 +943,10 @@ document.getElementById('addStudentButton').addEventListener('click', function()
 });
 */
 
-document.getElementById('submitAtt1').addEventListener('click', function() {
+/*document.getElementById('submitAtt1').addEventListener('click', function() {
   this.classList.add('dimmed');
 });
+*/
 
 /*document.getElementById('submitAtt2').addEventListener('click', function() {
   this.classList.add('dimmed');
