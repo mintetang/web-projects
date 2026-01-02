@@ -56,11 +56,8 @@ body {
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    position: sticky;
-    top: 0;
-    left: 0;
+    position: sticky
     margin: 1em 0;
-
 }
 h2 {
     color: #333;
@@ -105,7 +102,7 @@ li {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-} */
+} 
 
 strong {
     margin-right: 10px;
@@ -115,7 +112,7 @@ strong {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
+*/
 button {
     cursor: pointer;
     border: none;
@@ -284,5 +281,22 @@ label#googleNote span {
 
 h4{
     font-size: larger;
+    font-style: italic;
     display:inline-block;
 } 
+/* Base layout */
+
+/* Inputs */
+.controls input,
+.controls select {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* Labels */
+.controls label {
+  font-size: 14px;
+  margin-top: 10px;
+}
