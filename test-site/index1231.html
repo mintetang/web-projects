@@ -33,27 +33,6 @@
     </div>
 
     <div class="container">
-        <div>
-<!--       <button id="exlocal" 
-        onclick="exportLocalStorage()">
-        儲存出席紀錄 
-        </button>
-        <button id="inlocal"
-        onclick="showreadForm()">
-        讀回出席紀錄
-        </button>--> 
-        <label id="googleNote">
-            點名時請先<span>"登入認證"</span>=>“讀回Google”<br>
-            點名完成後再<span>"登入認證"</span>=>“儲存Google”
-          </label>
-          <button id="authorize_button">登入認證</button>
-          ==>
-          <button id="googleIn" onclick="googleIn()">讀回Google</button>
-          OR
-          <button id="update_button" onclick="overwriteFile()">儲存Google</button>
-        <button id="clean" 
-        onclick="cleanSelectedClass()">刪除出席記錄 
-        </div>
         <div id="formSection">
             <div id="formTitle">
             <!--<h2>出席記錄</h2>-->
@@ -273,17 +252,17 @@
         </button>
     </div>
     <div>
-<!--       <button id="exlocal" 
+        <button id="exlocal" 
         onclick="exportLocalStorage()">
         儲存出席紀錄 
         </button>
         <button id="inlocal"
         onclick="showreadForm()">
         讀回出席紀錄
-        </button>--> 
+        </button>
         <label id="googleNote">
-            點名時請先<span>"登入認證"</span>=>“讀回Google”<br>
-            點名完成後再<span>"登入認證"</span>=>“儲存Google”
+            讀回或儲存Google: 請先<span>"登入認證"</span><br>
+            之後==>“讀回Google”或“儲存Google”
           </label>
           <button id="authorize_button">登入認證</button>
           ==>
@@ -292,8 +271,9 @@
           <button id="update_button" onclick="overwriteFile()">儲存Google</button>
         <button id="clean" 
         onclick="cleanSelectedClass()">刪除出席記錄 
+        </button><p id="pfileId">1xUEErR91jMnm0V98PPkgMxWCefWbsS5D</p>
+        
     </div>
-    </button><p id="pfileId">1xUEErR91jMnm0V98PPkgMxWCefWbsS5D</p>
     <script src="scripts/roster2.js"></script>
     <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
