@@ -57,6 +57,9 @@
         <div id="formSection">
             <div id="formTitle">
             <!--<h2>出席記錄</h2>-->
+            <button class = 'refresh' onclick="location.reload()">
+                0 刷新頁面
+            </button>
             <button id="addClassButton" 
                 onclick="showAddClassForm()">
                 1 加入新紀錄日期
@@ -80,10 +83,7 @@
 			<button onclick="histRate()">
                 5 更新歷史出席率
             </button>
-            <button class = 'refresh' onclick="location.reload()">
-                0 刷新Redo
-            </button>
-             
+                                         
             <label for="classSelector">日期和堂次記錄:</label>
             <select id="classSelector" required 
                 onchange="showStudentsList()">

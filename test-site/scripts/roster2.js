@@ -108,7 +108,7 @@ function readOrg() {
 
 async function addOrg() {
     const requestURL =
-        "https://github.com/mintetang/web-projects/blob/main/test-site/scripts/nameroll1.json";
+        "https://roster2.wasmer.app/scripts/nameroll1.json";
     const request = new Request(requestURL);
     const response = await fetch(request);
     const rData = await response.json();
@@ -807,9 +807,9 @@ function getSavedColor(selectedClass, rollNumber) {
 
 function cleanSelectedClass()
     {
-    const reCheck = prompt('！！！請輸入"CONFIRM"來確認刪除目前的日期出席記錄，確認後"無法回復"！！！');
+    const reCheck = prompt('！！！請輸入"27299580"來確認刪除目前的日期出席記錄，確認後"無法回復"！！！');
     //console.log(reCheck); 
-    if (reCheck === 'CONFIRM') {
+    if (reCheck === '27299580') {
   // Perform actions for cancellation, e.g., stop further processing
 
     const classSelector = 
@@ -848,7 +848,7 @@ function cleanSelectedClass()
     document.location.reload();
 	//localStorage.clear();
     } else {
-    alert("已經取消.");
+    alert("輸入錯誤，無法刪除！");
     }
 
 }
@@ -1116,78 +1116,97 @@ async function uploadToDrive() {
 
 
 async function googleIn() {
-  accessToken = gapi.client.getToken().access_token;
+  const accessToken = gapi.client.getToken()?.access_token;
   console.log(accessToken);
-  //  const fileUrl =
 
-  if (typeof fileId !== "undefined"){
-    console.log(fileId);}
-    else {
-  fileId = document.getElementById("pfileId").innerText;}
-  
+  if (!accessToken) {
+    alert("❌ 尚未取得授權，請先登入認證");
+    return;
+  }
+
+  if (typeof fileId === "undefined") {
+    fileId = document.getElementById("pfileId").innerText;
+  }
+
   const fetchUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
-  const fetchOptions = {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  };
 
   try {
-    const response = await fetch(fetchUrl, fetchOptions);
+    const response = await fetch(fetchUrl, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
     if (!response.ok) {
-      throw new Error(`Error fetching file: ${response.statusText}`);
+      throw new Error(`HTTP ${response.status}`);
     }
-    const fileContent = await response.json(); // or .blob(), .json(), etc., depending on file type
-    console.log("File Content:", fileContent);
-    localStorage.clear(); // Clear existing localStorage before restoring
+
+    // SAFER for Drive files
+    const text = await response.text();
+    const fileContent = JSON.parse(text);
+
+    localStorage.clear();
     for (const key in fileContent) {
       localStorage.setItem(key, fileContent[key]);
     }
-    console.log("localStorage restored successfully!");
+
     alert("成功讀回紀錄!");
-    location.reload();
-    //return fileContent;
+    setTimeout(() => location.reload(), 300);
+
   } catch (error) {
     console.error("Failed to read file:", error);
-    return null;
+    alert("❌ 讀取失敗，請確認登入認證？");
   }
 }
+
 
 // Assuming you have authenticated and obtained an access token
 // and the gapi client library is loaded.
 
 async function overwriteFile() {
-  accessToken = gapi.client.getToken().access_token;
-  console.log(accessToken);
-  // 1. Get all localStorage data
-  const localStorageData = {};
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    localStorageData[key] = localStorage.getItem(key);
+  try {
+    const accessToken = gapi.client.getToken()?.access_token;
+    if (!accessToken) {
+      alert("❌ 尚未登入 Google, 請先認證");
+      return;
+    }
+
+    // Collect localStorage
+    const localStorageData = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      localStorageData[key] = localStorage.getItem(key);
+    }
+
+    const jsonString = JSON.stringify(localStorageData, null, 2);
+    const fileId = document.getElementById("pfileId").innerText.trim();
+
+    const url =
+      `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`;
+
+    const response = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: jsonString,
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP ${response.status}: ${errorText}`);
+    }
+
+    // Google Drive may return EMPTY BODY — don't force JSON
+    const resultText = await response.text();
+    console.log("Drive response:", resultText || "(empty)");
+
+    alert("✅ 成功更新 Google roster.json");
+
+  } catch (err) {
+    console.error("Update failed:", err);
+    alert("❌ 更新失敗，請確認登入認證？");
   }
-
-  // 2. Convert to a JSON string
-  const jsonString = JSON.stringify(localStorageData, null, 4);
-
-  // 3. Create a Blob and URL
-  const newContentBlob = new Blob([jsonString], { type: "application/json" });
-  console.log(newContentBlob);
-  fileId = document.getElementById("pfileId").innerText;
-   const url = 'https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=media';
-    fetch(url, {
-        method: 'PATCH',
-        headers: new Headers({
-            Authorization: `Bearer ${accessToken}`,
-            'Content-type': "application/json"
-        }),
-        body: jsonString
-        })
-        .then(result => result.json())
-        .then(value => {
-            console.log('Updated. Result:\n' + JSON.stringify(value, null, 2));
-            alert('成功更新Google roster.json');
-        })
-        .catch(err => console.error(err))
-
-      }
+}
