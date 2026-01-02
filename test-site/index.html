@@ -55,47 +55,25 @@
         onclick="cleanSelectedClass()">刪除出席記錄 
         </div>
         <div id="formSection">
-            <div id="formTitle">
-            <!--<h2>出席記錄</h2>-->
-            <button class = 'refresh' onclick="location.reload()">
-                0 刷新頁面
-            </button>
-            <button id="addClassButton" 
-                onclick="showAddClassForm()">
-                1 加入新紀錄日期
-            </button>
-            <button id="readOrgButton" 
-                onclick="showreadOrgForm()">
-                2 使用上次會友名單
-            </button>
-            
-            <button id="addStudentOrgButton" 
-                onclick="showAddStudentOrgForm()">
-                2A 匯入初始名單
-            </button>
-            <button id="addStudentButton" 
-                onclick="showAddStudentForm()">
-                3 加入新會友
-            </button>
-            <button id="submitAtt1" onclick="submitAttendance()">
-                4 確認送出統計
-            </button>
-			<button onclick="histRate()">
-                5 更新歷史出席率
-            </button>
-                                         
-            <label for="classSelector">日期和堂次記錄:</label>
-            <select id="classSelector" required 
-                onchange="showStudentsList()">
-            </select>
-            
-            <!--<label for="rollno">搜尋編號: </label>
-            <input type="text" id="rollno" required
-                size="10" onchange="searchRoll()"> -->
-            <input type="text" id="searchTermInput" placeholder="輸入會友名稱">
-            <button onclick="searchAndHighlight()">Search</button>
+            <div id="formTitle" class="controls">
 
+                <button class="refresh" onclick="location.reload()">刷新頁面</button>
+                <button onclick="showAddClassForm()">📅 加入堂次</button>
+                <button onclick="showreadOrgForm()">上次名單</button>
+                <button onclick="showAddStudentOrgForm()">匯入名單</button>
+                <button onclick="showAddStudentForm()">👤 加入新朋友</button>
+                <button onclick="submitAttendance()">📊 送出統計</button>
+                <button onclick="histRate()">統計圖</button>
+
+                <label for="classSelector">日期和堂次記錄</label>
+                <select id="classSelector" required onchange="showStudentsList()"></select>
+
+                <input type="text" id="searchTermInput" placeholder="輸入會友名稱">
+                <button onclick="searchAndHighlight()">搜尋</button>
+
+            </div>                                      
         </div>
+
 
             <ul id="studentsList">
                 <!-- Populate students dynamically 

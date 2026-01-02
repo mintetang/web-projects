@@ -120,12 +120,12 @@ button {
 
     cursor: pointer;
     border: none;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: #3498db;
     color: #fff;
-    padding: 15px;
+    padding: 5px;
     cursor: pointer;
-    margin: 10px 10px;
+    margin: 5px 5px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -282,10 +282,9 @@ animation: blink-animation 1s 5 alternate; /* 1s duration, 5 seconds, alternates
   }
 }
 
-label#googleNote {
-    font-weight: bold;
-}
 label#googleNote span {
     background-color: gold;
-    font-size: 1.5em;
+    font: 20px;
+    font-weight: bold;
+    font-style: italic;
 }
