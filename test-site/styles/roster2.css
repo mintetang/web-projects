@@ -117,7 +117,6 @@ strong {
 }
 
 button {
-
     cursor: pointer;
     border: none;
     border-radius: 5px;
@@ -235,12 +234,6 @@ button#clean {
 
 }
 
-button.refresh {
-    border:solid #3498db ;
-    color:maroon;
-    background-color:rgb(80, 255, 179);
-}
-
 button.dimmed {
   background-color: darkgray; /* Dimmed background color */
   color: #ccc; /* Lighter text color for dimmed state */
@@ -267,7 +260,7 @@ button#googleIn {
 }
 
 button.blink {
-animation: blink-animation 1s 5 alternate; /* 1s duration, 5 seconds, alternates between keyframes */
+animation: blink-animation 1s 3 alternate; /* 1s duration, 5 seconds, alternates between keyframes */
 }
 
 @keyframes blink-animation {
@@ -288,3 +281,8 @@ label#googleNote span {
     font-weight: bold;
     font-style: italic;
 }
+
+h4{
+    font-size: larger;
+    display:inline-block;
+} 
