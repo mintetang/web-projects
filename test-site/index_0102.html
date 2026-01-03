@@ -55,50 +55,27 @@
         onclick="cleanSelectedClass()">刪除出席記錄 
         </div>
         <div id="formSection">
-            <div id="formTitle">
-            <!--<h2>出席記錄</h2>-->
-            <h4>1開始</h4>
-            <button class = 'refresh' onclick="location.reload()">
-                 刷新頁面
-            </button>
-            <button id="addClassButton" 
-                onclick="showAddClassForm()">
-                 📅 加入堂次
-            </button>
-            <h4>2名單</h4>
-            <button id="readOrgButton" 
-                onclick="showreadOrgForm()">
-                 上次名單
-            </button>
-            
-            <button id="addStudentOrgButton" 
-                onclick="showAddStudentOrgForm()">
-                 匯入名單
-            </button>
-            <button id="addStudentButton" 
-                onclick="showAddStudentForm()">
-                 ..👤 加入新朋友
-            </button>
-            <h4>3統計</h4>
-            <button id="submitAtt1" onclick="submitAttendance()">
-                 📊 送出統計
-            </button>
-			<button onclick="histRate()">
-                 統計圖
-            </button>
-             
-            <label for="classSelector">日期和堂次記錄:</label>
-            <select id="classSelector" required 
-                onchange="showStudentsList()">
-            </select>
-            
-            <!--<label for="rollno">搜尋編號: </label>
-            <input type="text" id="rollno" required
-                size="10" onchange="searchRoll()"> -->
-            <input type="text" id="searchTermInput" placeholder="輸入會友名稱">
-            <button onclick="searchAndHighlight()">Search</button>
+            <div id="formTitle" class="controls">
+                <h4>1開始</h4>
+                <button class="refresh" onclick="location.reload()">刷新頁面</button>
+                <button onclick="showAddClassForm()">📅 加入堂次</button>
+                <h4>2名單</h4>
+                <button onclick="showreadOrgForm()">上次名單</button>
+                <button onclick="showAddStudentOrgForm()">匯入名單</button>
+                <button onclick="showAddStudentForm()">..👤 加入新朋友</button>
+                <h4>3統計</h4>
+                <button onclick="submitAttendance()">📊 送出統計</button>
+                <button onclick="histRate()">統計圖</button>
 
+                <label for="classSelector">日期和堂次記錄</label>
+                <select id="classSelector" required onchange="showStudentsList()"></select>
+
+                <input type="text" id="searchTermInput" placeholder="輸入會友名稱">
+                <button onclick="searchAndHighlight()">搜尋</button>
+
+            </div>                                      
         </div>
+
 
             <ul id="studentsList">
                 <!-- Populate students dynamically 
@@ -276,18 +253,26 @@
         </button>
     </div>
     <div>
-        <button id="exlocal" 
+<!--       <button id="exlocal" 
         onclick="exportLocalStorage()">
-        暫存紀錄 
+        儲存出席紀錄 
         </button>
         <button id="inlocal"
         onclick="showreadForm()">
-        讀回暫存紀錄
+        讀回出席紀錄
         </button>
+        <label id="googleNote">
+            點名時請先<span>"登入認證"</span>=>“讀回Google”<br>
+            點名完成後再<span>"登入認證"</span>=>“儲存Google”
+          </label>
+          <button id="authorize_button">登入認證</button>
+          ==>
+          <button id="googleIn" onclick="googleIn()">讀回Google</button>
+          OR
+          <button id="update_button" onclick="overwriteFile()">儲存Google</button>
         <button id="clean" 
         onclick="cleanSelectedClass()">刪除出席記錄 
-        </button>
-    </div>
+    </div>--> 
     </button><p id="pfileId">1xUEErR91jMnm0V98PPkgMxWCefWbsS5D</p>
     <script src="scripts/roster2.js"></script>
     <!-- Google Identity Services -->

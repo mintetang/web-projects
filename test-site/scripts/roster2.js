@@ -892,7 +892,7 @@ function exportLocalStorage() {
     downloadLink.click();
     document.body.removeChild(downloadLink);
   
-  alert(`Your localStorage data has been exported to ${filename}`);
+  alert(`暫存成功 ${filename}`);
 }
 
 function rlsFromFile(event) {

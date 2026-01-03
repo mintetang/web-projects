@@ -56,8 +56,11 @@ body {
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    position: sticky
+    position: sticky;
+    top: 0;
+    left: 0;
     margin: 1em 0;
+
 }
 h2 {
     color: #333;
@@ -102,7 +105,7 @@ li {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-} 
+} */
 
 strong {
     margin-right: 10px;
@@ -112,16 +115,17 @@ strong {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-*/
+
 button {
+
     cursor: pointer;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: #3498db;
     color: #fff;
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
-    margin: 5px 5px;
+    margin: 10px 10px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -231,6 +235,10 @@ button#clean {
 
 }
 
+button.refresh {
+    border:dashed #0c8fe6 ;
+}
+
 button.dimmed {
   background-color: darkgray; /* Dimmed background color */
   color: #ccc; /* Lighter text color for dimmed state */
@@ -238,65 +246,8 @@ button.dimmed {
   pointer-events: none; /* Optional: prevent further clicks on the dimmed button */
 }
 
-button#update_button {
-    background-color: #1a8b85;
-    border:solid;
-    display:inline-flexbox;
-}
-
-button#upload_button {
-    background-color: #1a8b85;
-    border:solid;
-    display:inline-flexbox;
-}
-
-button#googleIn {
-    background-color: #1a8b85;
-    border:solid;
-    display:inline-flexbox;
-}
-
-button.blink {
-animation: blink-animation 1s 3 alternate; /* 1s duration, 5 seconds, alternates between keyframes */
-}
-
-@keyframes blink-animation {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.2; /* Button becomes semi-transparent */
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-label#googleNote span {
-    background-color: gold;
-    font: 20px;
-    font-weight: bold;
-    font-style: italic;
-}
-
 h4{
     font-size: larger;
     font-style: italic;
     display:inline-block;
 } 
-/* Base layout */
-
-/* Inputs */
-.controls input,
-.controls select {
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-/* Labels */
-.controls label {
-  font-size: 14px;
-  margin-top: 10px;
-}
