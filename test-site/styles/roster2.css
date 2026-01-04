@@ -246,6 +246,10 @@ button.dimmed {
   pointer-events: none; /* Optional: prevent further clicks on the dimmed button */
 }
 
+button.blink {
+animation: blink-animation 1s 3 alternate; /* 1s duration, 5 seconds, alternates between keyframes */
+}
+
 h4{
     font-size: larger;
     font-style: italic;
