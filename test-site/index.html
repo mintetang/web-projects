@@ -94,10 +94,18 @@
             
             <!--<label for="rollno">搜尋編號: </label>
             <input type="text" id="rollno" required
-                size="10" onchange="searchRoll()"> -->
+                size="10" onchange="searchRoll()"> 
             <input type="text" id="searchTermInput" placeholder="輸入會友名稱">
-            <button onclick="searchAndHighlight()">Search</button>
-
+            <button onclick="searchAndHighlight()">Search</button>-->
+            <form id="searchForm" onsubmit="searchAndHighlight(); return false;">
+            <input
+                type="text"
+                id="searchTermInput"
+                placeholder="輸入會友名稱"
+            >
+            <button type="submit">Search</button>
+            </form>
+            <a href="#summarySection" class="skip-link">快捷📊</a>
         </div>
 
             <ul id="studentsList">
@@ -169,7 +177,7 @@
 
             <!-- Historical Section -->            
             <div id="hisSection">
-                <h3>歷史出席率</h3>
+                <h3>出席率統計圖</h3>
                 
                 <p>
                     <!--紀錄日期堂次:  -->

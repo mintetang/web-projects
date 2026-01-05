@@ -434,7 +434,7 @@ function histRate() {
         data: {
             labels: date, // Array for labels on the x-axis
             datasets: [{
-                label: '歷史出席率',
+                label: '出席率',
                 data: perInt, // Your array of data points
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
