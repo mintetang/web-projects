@@ -66,16 +66,16 @@ function readOrg() {
 
         // copy the colors
 
-        const colorsCopy = localStorage.getItem("colors");
-        const stdColor = JSON.parse(colorsCopy);
+        //const colorsCopy = localStorage.getItem("colors");
+        //const stdColor = JSON.parse(colorsCopy);
         //console.log(stdColor);
 
         //make color of newClass to be last class
-        stdColor[newClass]=stdColor[lsClass];
+        //stdColor[newClass]=stdColor[lsClass];
         //console.log(stdColor);
 
-        localStorage.setItem('colors', 
-                JSON.stringify(stdColor));
+        //localStorage.setItem('colors', 
+        //        JSON.stringify(stdColor));
         //location.reload();
         
         //copy attendanceData to new class
