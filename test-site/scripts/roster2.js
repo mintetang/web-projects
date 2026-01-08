@@ -180,6 +180,8 @@ function std(a, b) {
     listItem.appendChild(resetButton); //jt 0928 night
     studentsList.appendChild(listItem);
     saveStudentsList(selectedClass);
+    // Update the attendance record for the specific student
+    updateAttendanceRecord(newStudentName, selectedClass, 'reset');
     closePopup();
 }
 
@@ -295,12 +297,7 @@ function showAttendanceResult(selectedClass) {
         filter(record => record.status === 'reset').length; //jt 1002
 
     const totalStudents = filteredAttendanceData.length;
-    /*reduce((acc, record) => {
-        if (!acc.includes(record.name)) {
-            acc.push(record.name);
-        }
-        return acc;
-    }, []).length - totalReset;*/
+    console.log(totalStudents);
 
     // Update the result section
     document.getElementById('attendanceDate').
@@ -565,64 +562,6 @@ function showStudentsList() {
     }
 }
 
-/*function showAttendanceResult(selectedClass) {
-    const resultSection = 
-        document.getElementById('resultSection');
-
-    if (!resultSection) {
-        console.error('Result section is not properly defined.');
-        return;
-    }
-
-    const now = new Date();
-    const date = 
-        `${now.getFullYear()}-${String(now.getMonth() + 1).
-        padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-    const time = 
-        `${String(now.getHours()).padStart(2, '0')}:
-        ${String(now.getMinutes()).padStart(2, '0')}:
-        ${String(now.getSeconds()).padStart(2, '0')}`;
-
-    // Retrieve attendance data from local storage
-    const savedAttendanceData = JSON.parse
-        (localStorage.getItem('attendanceData')) || [];
-    const filteredAttendanceData = savedAttendanceData.
-        filter(record => record.class === selectedClass);
-
-    const totalStudents = filteredAttendanceData.
-    reduce((acc, record) => {
-        if (!acc.includes(record.name)) {
-            acc.push(record.name);
-        }
-        return acc;
-    }, []).length;
-
-    const totalPresent = filteredAttendanceData.
-        filter(record => record.status === 'present').length;
-    const totalAbsent = filteredAttendanceData.
-        filter(record => record.status === 'absent').length;
-    const totalLeave = filteredAttendanceData.
-        filter(record => record.status === 'leave').length;
-
-    // Update the result section
-    const resultContent = 
-        `Date: ${date} | Time: ${time} | 
-        Total Students: ${totalStudents} | 
-        Present: ${totalPresent} | 
-        Absent: ${totalAbsent} | Leave: ${totalLeave} |
-        Attending Rate ${totalPresent/totalStudents*100}%`;
-    resultSection.innerHTML = resultContent;
-
-    // Show the result section
-    resultSection.style.display = 'block';
-
-    // Show the list of students below the result section
-    const studentsListHTML = 
-        generateStudentsListHTML(filteredAttendanceData);
-    resultSection.insertAdjacentHTML
-        ('afterend', studentsListHTML);
-}
-*/
 
 function markAttendance
     (status, listItem, selectedClass) {
@@ -713,12 +652,7 @@ function showSummary(selectedClass) {
         filter(record => record.status === 'reset').length; //jt 1002
 
     const totalStudents = filteredAttendanceData.length;
-    /*reduce((acc, record) => {
-        if (!acc.includes(record.name)) {
-            acc.push(record.name);
-        }
-        return acc;
-    }, []).length - totalReset;*/
+    console.log(totalStudents);
 
     document.getElementById('totalStudents').
         innerText = totalStudents;
@@ -979,7 +913,7 @@ window.onload = () => {
   .getElementById("authorize_button")
   .addEventListener("click", function () {
     this.classList.add("dimmed");
-  });*/
+  });
 document.getElementById("upload_button").addEventListener("click", function () {
   this.classList.add("blink");
 });
@@ -990,7 +924,7 @@ document.getElementById("googleIn").addEventListener("click", function () {
 
 document.getElementById("update_button").addEventListener("click", function () {
   this.classList.add("blink");
-});
+});*/
 
 function maybeEnableButtons() {
   if (gapiInited && gisInited) {
