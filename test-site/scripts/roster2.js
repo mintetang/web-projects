@@ -30,6 +30,16 @@ function showAddClassForm() {
     document.getElementById('addClassPopup').
         style.display = 'block';
 }
+function resetStatus() {
+    //watch, this is to reset all status to null all classes need to retify
+        localStorage.setItem('attendanceData', 
+                null); 
+        localStorage.setItem('colors', 
+                null);   
+        //location.reload();
+        showStudentsList() 		
+    }
+
 function readOrg() {
     //console.log("read last one");
     
@@ -83,9 +93,7 @@ function readOrg() {
         const savedAttendanceData = JSON.parse(copattData);
          const copyatt = savedAttendanceData.map(item => ({
             ...item, status: 'reset'}));
-
         //console.log(copyatt);
-
 
         // filter to be copied att data from last class
         const matchingObjects = copyatt.filter(obj => obj.class.includes(lsClass));

@@ -70,15 +70,15 @@
                 onclick="showAddStudentOrgForm()">
                  匯入名單
             </button>
-            <button id="addStudentButton" 
-                onclick="showAddStudentForm()">
-                 ..👤 加入新朋友
-            </button>
             <button id="readOrgButton" 
                 onclick="showreadOrgForm()">
                  上次名單
             </button>
-            <h4>3統計</h4>
+            <button id="addStudentButton" 
+                onclick="showAddStudentForm()">
+                 ..👤 加入新朋友
+            </button>
+                        <h4>3統計</h4>
             <button id="submitAtt1" onclick="submitAttendance()">
                  📊 送出統計
             </button>
@@ -251,7 +251,8 @@
         <label for="session">選擇第幾堂:</label>
         <select id="session" required>
             <option value="第1堂" selected>第1堂</option>
-            <option value="第2堂">第2堂</option>				
+            <option value="第2堂">第2堂</option>
+            <option value="第3堂">第3堂</option>				
                 <!-- Populate classes dynamically -->
             </select>
         <!-- Add more fields as needed -->
