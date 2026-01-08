@@ -174,9 +174,9 @@ function std(a, b) {
         createButton('重設', 'reset',
             () => markAttendance('reset', listItem, selectedClass));
 
-    listItem.appendChild(absentButton);
+    //listItem.appendChild(absentButton);
     listItem.appendChild(presentButton);
-    listItem.appendChild(leaveButton);
+    //listItem.appendChild(leaveButton);
     listItem.appendChild(resetButton); //jt 0928 night
     studentsList.appendChild(listItem);
     saveStudentsList(selectedClass);
@@ -288,19 +288,19 @@ function showAttendanceResult(selectedClass) {
     const totalPresent = filteredAttendanceData.
         filter(record => record.status === 'present').length;
     const totalAbsent = filteredAttendanceData.
-        filter(record => record.status === 'absent').length;
+        filter(record => record.status !== 'present').length;
     const totalLeave = filteredAttendanceData.
         filter(record => record.status === 'leave').length;
     const totalReset = filteredAttendanceData.
         filter(record => record.status === 'reset').length; //jt 1002
 
-    const totalStudents = filteredAttendanceData.
-    reduce((acc, record) => {
+    const totalStudents = filteredAttendanceData.length;
+    /*reduce((acc, record) => {
         if (!acc.includes(record.name)) {
             acc.push(record.name);
         }
         return acc;
-    }, []).length - totalReset;
+    }, []).length - totalReset;*/
 
     // Update the result section
     document.getElementById('attendanceDate').
@@ -315,31 +315,13 @@ function showAttendanceResult(selectedClass) {
         innerText = totalPresent;
     document.getElementById('attendanceAbsent').
         innerText = totalAbsent;
-    document.getElementById('attendanceLeave').
-        innerText = totalLeave;
+    //document.getElementById('attendanceLeave').
+    //    innerText = totalLeave;
     document.getElementById('attendanceRate').
         innerText = Math.round(`${totalPresent/totalStudents*100}`)+'%';
 
     // Show the attendance result section
     resultSection.style.display = 'block';
-    /*
-    //set attText and attClass
-    attText = document.getElementById('attendanceRate').innerText;
-    if (attText === 'NaN%')
-        {console.log('need to have attendance data to output');
-            return;
-        };
-    attClass = selectedClass;
-    //console.log(attClass);
-    //console.log(attText);  
-    //make attendance history session here
-    const hisSection = document.
-        getElementById('hisSection');
-    //document.getElementById("hisSection").innerText="TBD";
-    document.getElementById("attP").innerText = attText;
-    // Show attendance history section
-    hisSection.style.display = 'block';
-    histRate(attClass, attText);*/
 }
 function histRate() {
     const classSelector = document.
@@ -548,9 +530,9 @@ function showStudentsList() {
         const resetButton =
         createButton('重設', 'reset',
             () => markAttendance('reset', listItem, selectedClass));
-        listItem.appendChild(absentButton);
+        //listItem.appendChild(absentButton);
         listItem.appendChild(presentButton);
-        listItem.appendChild(leaveButton);
+        //listItem.appendChild(leaveButton);
         listItem.appendChild(resetButton); //jt 0928 night
         studentsList.appendChild(listItem);
 
@@ -724,19 +706,19 @@ function showSummary(selectedClass) {
     const totalPresent = filteredAttendanceData.
         filter(record => record.status === 'present').length;
     const totalAbsent = filteredAttendanceData.
-        filter(record => record.status === 'absent').length;
-    const totalLeave = filteredAttendanceData.
-        filter(record => record.status === 'leave').length;
+        filter(record => record.status !== 'present').length;
+    //const totalLeave = filteredAttendanceData.
+    //    filter(record => record.status === 'leave').length;
     const totalReset = filteredAttendanceData.
         filter(record => record.status === 'reset').length; //jt 1002
 
-    const totalStudents = filteredAttendanceData.
-    reduce((acc, record) => {
+    const totalStudents = filteredAttendanceData.length;
+    /*reduce((acc, record) => {
         if (!acc.includes(record.name)) {
             acc.push(record.name);
         }
         return acc;
-    }, []).length - totalReset;
+    }, []).length - totalReset;*/
 
     document.getElementById('totalStudents').
         innerText = totalStudents;
@@ -744,8 +726,8 @@ function showSummary(selectedClass) {
         innerText = totalPresent;
     document.getElementById('totalAbsent').
         innerText = totalAbsent;
-    document.getElementById('totalLeave').
-        innerText = totalLeave;
+    //document.getElementById('totalLeave').
+    //    innerText = totalLeave;
 }
 
 function getCurrentDate() {
@@ -919,57 +901,6 @@ function rlsFromFile(event) {
     reader.readAsText(file);
     closePopup();
 }
-
-// HTML for file input:
-// <input type="file" id="restoreFileInput" accept=".json" onchange="rlsFromFile(event)">
-
-/* make button dimmed after clicked
-
-document.getElementById('addClassButton').addEventListener('click', function() {
-  this.classList.add('dimmed');
-});
-
-document.getElementById('readOrgButton').addEventListener('click', function() {
-  this.classList.add('dimmed');
-});
-
-document.getElementById('addStudentOrgButton').addEventListener('click', function() {
-  this.classList.add('dimmed');
-});
-
-/* add students should be multiple actions
-document.getElementById('addStudentButton').addEventListener('click', function() {
-  this.classList.add('dimmed');
-});
-*/
-
-/*document.getElementById('submitAtt1').addEventListener('click', function() {
-  this.classList.add('dimmed');
-});
-*/
-
-/*document.getElementById('submitAtt2').addEventListener('click', function() {
-  this.classList.add('dimmed');
-});*/
-
-/*function searchRoll() {
-    const rolltarget = document.getElementById("rollno").value;
-    console.log(rolltarget);
-    // Define your attribute name and value as variables
-    const attributeName = "data-roll-number";
-    let attributeValue = String(rolltarget-10);
-    if (Number(rolltarget) <= 10){
-     attributeValue = 5;
-    }
-    // Construct the CSS selector string using template literals
-    const selector = `[${attributeName}="${attributeValue}"]`;
-    // Find the first element matching the selector
-    const targetRoll = document.querySelector(selector);
-    console.log(targetRoll);
-    if (targetRoll) {
-            targetRoll.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    } */
 
 function highlightSearchTerm(searchTerm, targetElementId) {
         const targetElement = document.getElementById(targetElementId);
