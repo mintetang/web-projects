@@ -79,9 +79,11 @@ function readOrg() {
         //location.reload();
         
         //copy attendanceData to new class
-        const copattData = localStorage.getItem('attendanceData');
-        //console.log(copattData);
-        const copyatt = JSON.parse(copattData);
+       const copattData = localStorage.getItem('attendanceData');
+        const savedAttendanceData = JSON.parse(copattData);
+         const copyatt = savedAttendanceData.map(item => ({
+            ...item, status: 'reset'}));
+
         //console.log(copyatt);
 
 
