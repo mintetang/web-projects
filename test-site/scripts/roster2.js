@@ -771,7 +771,7 @@ function cleanSelectedClass()
           JSON.stringify(newatt));
 
     //refresh
-    document.location.reload();
+    location.reload();
 	//localStorage.clear();
     } else {
     alert("輸入錯誤，無法刪除！");
