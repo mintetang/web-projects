@@ -218,6 +218,7 @@ function addClass() {
     newClassOption.text = newClassName;
     classSelector.add(newClassOption);
     classSelector.value = newClassName;
+    addOrg(); //jt 1003 to add org members to new class
     showStudentsList();
     saveClasses();
     closePopup();
