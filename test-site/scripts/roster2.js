@@ -118,8 +118,8 @@ function readOrg() {
 
 async function addOrg() {
     const requestURL =
-        //"https://roster2.wasmer.app/scripts/nameroll1.json";
-        "https://mintetang.github.io/web-projects/test-site/scripts/nameroll1.json";
+        "https://roster2.wasmer.app/scripts/nameroll1.json";
+        //"https://mintetang.github.io/web-projects/test-site/scripts/nameroll1.json";
     const request = new Request(requestURL);
     const response = await fetch(request);
     const rData = await response.json();
