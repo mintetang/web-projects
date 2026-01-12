@@ -218,6 +218,7 @@ function addClass() {
     newClassOption.text = newClassName;
     classSelector.add(newClassOption);
     classSelector.value = newClassName;
+    addOrg();//jt 0112 auto batch load org list
     showStudentsList();
     saveClasses();
     closePopup();
